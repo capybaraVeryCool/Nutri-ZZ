@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap');
+
+:root {
+  --primary: rgb(147, 189, 147);
+  --primary-dark: rgb(131, 168, 131);
+  --primary-letter: white;
+  --light-gray: rgb(235, 235, 235);
+  --gray: rgb(216, 216, 216);
+  --black: rgb(100, 100, 100);
+  --light: rgb(245, 242, 234);
+}
+
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 200;
+}
+
+
+ a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}

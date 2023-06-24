@@ -1,0 +1,19 @@
+.progresscircle{
+  position: relative;
+  width: fit-content;
+}
+.progresscircle-text{
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 150px;
+  top: calc(50% - 75px);
+  left: calc(50% - 150px);
+}
+.progresscircle-text h2{
+  margin: 0;
+  font-weight: 500;
+}
