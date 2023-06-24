@@ -1,16 +1,19 @@
 .foodbar{
-  width: 85%;
-  background-color: var(--primary-letter);
+  width: 30vw;
+  background-color: var(--light);
   box-shadow: 8px 8px var(--light-gray);
   border: 2px solid var(--gray);
-  padding: 20px 40px;
-  margin: 30px 0;
+  padding: 10px 40px;
+  margin: 0;
   transition: 0.1s all linear;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  border-radius: 20px;
+  white-space: nowrap;
 }
+
 .foodbar:hover{
   box-shadow: 4px 4px var(--light-gray);
   transform: translate(4px,4px);
@@ -22,11 +25,12 @@
 }
 
 .foodbar-text h2{
-  font-size: 40px;
-  font-weight: 500;
+  font-size: 20px;
+  opacity: 0.7;
 }
 .foodbar-text h3{
   font-size: 30px;
+  opacity: 0.7;
 }
 
 .foodbar button{
@@ -44,8 +48,8 @@
 }
 
 .foodbar img{
-  width: 150px;
-  height: 150px;
+  width: 50px;
+  height: 50px;
   background-size: cover;
   border-radius: 50%;
   margin-right: 30px;
@@ -55,4 +59,15 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+@media (max-width: 480px) {
+  .foodbar img {
+    display: none;
+  }
+}
+
+
+.foodbar-right {
+  flex-grow: 1; /* Allow the right item to grow and take remaining space */
 }

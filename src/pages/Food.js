@@ -3,9 +3,11 @@ import '../stylesheets/Food.css';
 import {Link, useRouteMatch} from "react-router-dom";
 import {foodFrame, dataFrame} from '../functions/constants';
 import {formatDate, findNutrient, addFood} from '../functions/helperFunctions';
-import {Dropdown, DropdownElement, MessageDiv , PrimaryButton, BackArrowDiv} from '../stylesheets/styledComponents';
+import {Dropdown, DropdownElement, MessageDiv , SecButton, BackArrowDiv} from '../stylesheets/styledComponents';
 import ProgressCircle from '../components/ProgressCircle';
 import firebase from '../firebase';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Food = (props) => {
   const link = useRouteMatch('/meal/:id/search/:id').url.split('/');
@@ -110,7 +112,7 @@ const Food = (props) => {
             <h2 className="component-message">Press Enter to Submit</h2>
             <input type="number" min="1" id="page-food-amount"/>
           </MessageDiv>
-          <Dropdown fontSize="55px">
+          <Dropdown fontSize="20px">
             <button className="dropdown-btn">{unit} ⏷</button>
             <div className="dropdown-content">
               {
@@ -122,7 +124,7 @@ const Food = (props) => {
           </Dropdown>
         </div>
         <div>
-          <h2>{findNutrient(result,"Calories").amount} cals</h2>
+          <h2 style={{fontSize:"20px"}}>{findNutrient(result,"Calories").amount} cals</h2>
         </div>
       </div>
 
@@ -131,7 +133,7 @@ const Food = (props) => {
         <div className="page-food-macros">
           {
             macrosPer.map((macro) => {
-              return <ProgressCircle key={macro[0]} progress={Number(macro[1])} circleSize="250" calories={`${macro[1]}%`} message={macro[0]}/>
+              return <ProgressCircle key={macro[0]} progress={Number(macro[1])} circleSize="150" calories={`${macro[1]}%`} message={macro[0]}/>
             })
           }
         </div>
@@ -140,11 +142,11 @@ const Food = (props) => {
             result.nutrition.nutrients.map((nutrient) => {
               return <div className="page-food-nutrient" key={nutrient.name} >
                 <div className="page-food-nutrient-top">
-                  <h4 className="page-food-nutrient-top-text">{nutrient.name}</h4>
-                  <h4 className="page-food-nutrient-top-text">{nutrient.amount + nutrient.unit}</h4>
+                  <h4 className="page-food-nutrient-top-text" style={{fontSize:"15px"}}>{nutrient.name}</h4>
+                  <h4 className="page-food-nutrient-top-text" style={{fontSize:"15px"}}>{nutrient.amount + nutrient.unit}</h4>
                 </div>
                 <div>
-                  <h4 className="page-food-nutrient-percent">{nutrient.percentOfDailyNeeds}% of Daily Needs</h4>
+                  <h4 className="page-food-nutrient-percent" style={{fontSize:"15px"}}>{nutrient.percentOfDailyNeeds}% of Daily Needs</h4>
                 </div>
               </div>
             })
@@ -153,14 +155,14 @@ const Food = (props) => {
       </div>
 
       <div className="page-food-trackDiv">
-        <Link to={`/meal/${meal}`}>
-          <PrimaryButton onClick={trackFood}>Track Food</PrimaryButton>
+        <Link to={`/meal/${meal}`} className="link">
+          <SecButton width="50%" onClick={trackFood}>Track Food</SecButton>
         </Link>
       </div>
 
       <BackArrowDiv>
         <Link to={`/meal/${meal}/search`}>
-          <h2>⬅</h2>
+          <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
         </Link>
       </BackArrowDiv>
     </div>

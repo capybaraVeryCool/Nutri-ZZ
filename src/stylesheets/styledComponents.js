@@ -10,6 +10,7 @@ const Dropdown = styled.div`
   &:hover{
     .dropdown-content {
       display: block;
+      cursor: pointer;
     }
   }
 
@@ -75,8 +76,24 @@ const PrimaryButton = styled.div`
   width: ${props => props.width || "100%"};
   color: white;
   // font-weight: 100;
-  font-size: 30px;
-  margin: 30px auto;
+  font-size: 20px;
+  margin: 10px auto;
+  padding: 10px 5px;
+  transition: 0.1s linear all;
+  text-align: center;
+  &: hover{
+    background-color: var(--primary-dark);
+  }
+`;
+
+const SecButton = styled.div`
+  background-color: #f1b6ac;
+  border-radius: 50px;
+  width: ${props => props.width || "100%"};
+  color: white;
+  // font-weight: 100;
+  font-size: 25px;
+  margin: 10px auto;
   padding: 10px 0;
   transition: 0.1s linear all;
   text-align: center;
@@ -97,4 +114,4 @@ const BackArrowDiv = styled.div`
 
 
 
-export {Dropdown, DropdownElement, MessageDiv, PrimaryButton, BackArrowDiv};
+export {Dropdown, DropdownElement, MessageDiv, PrimaryButton, BackArrowDiv, SecButton};

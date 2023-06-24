@@ -8,6 +8,8 @@ import {dataFrame} from '../functions/constants';
 import DataList from '../components/DataList.js';
 import {PrimaryButton, BackArrowDiv} from '../stylesheets/styledComponents';
 import MealFoodBar from '../components/MealFoodBar';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Meal = (props) => {
   let meal = useRouteMatch('/meal/:id').url.split('/');
@@ -52,13 +54,13 @@ const Meal = (props) => {
     let calc = Math.round((data.sumCal/goalCal)*100);
     if (calc>100){
       calc = calc % 100;
-      setProgressColor({color: "rgb(245, 235, 146)"})
+      setProgressColor({color: "#588061"})
     } else {
       setProgressColor({color: "white"})
     }
     if (calc>200){
       calc= 100;
-      setProgressColor({color: "rgb(245, 235, 146)"})
+      setProgressColor({color: "#588061"})
     }
     setProgress(calc);
   }, [data, goalCal])
@@ -72,31 +74,33 @@ const Meal = (props) => {
 
 
   return (
-    <div  className="page-meal">
-      <div className="page-meal-top">
-        <div className="page-meal-progress" style={progressColor}>
-          <ProgressCircle  progress={progress} circleSize="400" calories={data.sumCal} message={"calories eaten"}/>
+    <div style={{display:"flex"}}>
+      <div  className="page-meal">
+        <div className="page-meal-top">
+          <h2>{meal}</h2>
+          <h3>{formatDate(props.date)}</h3>
+          <div className="page-meal-progress" style={progressColor}>
+            <ProgressCircle  progress={progress} circleSize="250" calories={data.sumCal} message={"calories eaten"}/>
+          </div>
         </div>
-        <h2>{meal}</h2>
-        <h3>{formatDate(props.date)}</h3>
+        <Link to={`${meal}/search`} className="page-meal-search-link link">
+          <PrimaryButton width="20%">Add Food</PrimaryButton>
+        </Link>
+        <div className="page-meal-foodlist">
+          {
+            data.foods.map((food, count) => {
+              return <MealFoodBar food={food} key={count} order={count} data={allData} meal={meal} update={updatedFullData} />
+            })
+          }
+        </div>
       </div>
-      <Link to={`${meal}/search`} className="page-meal-search-link">
-        <PrimaryButton width="60%">Add Food</PrimaryButton>
-      </Link>
-      <div className="page-meal-foodlist">
-        {
-          data.foods.map((food, count) => {
-            return <MealFoodBar food={food} key={count} order={count} data={allData} meal={meal} update={updatedFullData} />
-          })
-        }
-      </div>
-      <div className="page-meal-datalist">
+      <div className="meal-nutri-container" style={{border: "black", margin: "5px", backgroundColor:"ffddd6"}}>
         <DataList data={data} goal={goalCal}/>
       </div>
 
       <BackArrowDiv>
         <Link to="/">
-          <h2>⬅</h2>
+        <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
         </Link>
       </BackArrowDiv>
     </div>
