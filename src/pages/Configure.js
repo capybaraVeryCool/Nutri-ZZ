@@ -4,6 +4,8 @@ import {PrimaryButton, BackArrowDiv} from '../stylesheets/styledComponents';
 import '../stylesheets/Configure.css';
 import firebase from '../firebase';
 import { Container, Row, Col } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Configure = (props) => {
 
@@ -86,7 +88,7 @@ const Configure = (props) => {
 
       <BackArrowDiv>
         <Link to="/">
-          <h2>⬅</h2>
+          <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
         </Link>
       </BackArrowDiv>
     </div>

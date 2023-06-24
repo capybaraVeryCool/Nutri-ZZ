@@ -22,11 +22,11 @@ const NavBar = () => {
 
   return (
     <Navbar collapseOnSelect expand="lg" style={{ backgroundColor: "white" }}>
-      <Container>
+      <Container style={{display: "flex", justifyContent:"center"}}>
         <Navbar.Brand>
-          <img src="NutriZZ_logo.svg" height="40" alt="logo"/>
+          <img className="logo-custom" src="NutriZZ_logo.svg" height="50" alt="logo"/>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+        {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {!auth && (
@@ -53,7 +53,7 @@ const NavBar = () => {
               </Nav.Link>
             )}
           </Nav>
-        </Navbar.Collapse>
+        </Navbar.Collapse> */}
       </Container>
     </Navbar>
   );

@@ -121,7 +121,7 @@ const DataBar = (props) => {
 
       </div>
       <Link to={`/datasheet`}>
-        <button className="databar-button" style={{border: "none", opacity: 0.5}}>📊 Nutrient Data</button>
+        <button className="databar-button" style={{border: "none", opacity: 0.5, fontSize: 20}}>📊 Nutrient Data</button>
       </Link>
     </div>
   );

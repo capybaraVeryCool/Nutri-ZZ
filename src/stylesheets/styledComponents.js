@@ -87,11 +87,12 @@ const PrimaryButton = styled.div`
 
 const BackArrowDiv = styled.div`
   position: absolute;
-  top: 15px;
-  left: 20px;
+  top: 2px;
+  left: 30px;
   color: var(--primary-letter);
   font-size: 40px;
   z-index: 12;
+  background: transparent;
 `;
 
 

@@ -78,7 +78,7 @@ const Home = (props) => {
     return (
       <div className="page-home">
         <div className="page-home-top">
-          <button onClick={() => {firebase.auth().signOut()}}>Sign Out</button>
+          <button style={{position: "absolute", top:"15px", left: "15px", border: "none", borderRadius: "10px", backgroundColor:"#ffddd6", fontSize: 20, color: "rgba(0, 0, 0, 0.5)"}} onClick={() => {firebase.auth().signOut()}}>Sign Out</button>
           <DataBar date={date} data={data} config={props.config}/>
         </div>
         
@@ -86,7 +86,7 @@ const Home = (props) => {
         
         <div className="page-home-mealbars">
           {/* {meals.map((meal) => <MealBar meal={meal} totalCal={data.meals[meal].sumCal} key={meal}/>)} */}
-          <div>
+          <div className="mealbar-container">
             <Row>
               <Col>
                 <MealBar class="left" meal={meals[0]} totalCal={data.meals[meals[0]].sumCal} />
@@ -115,7 +115,7 @@ const Home = (props) => {
         </div>
         <div className="page-home-configure">
           <Link to="/configure">
-            <button style={{fontSize: 50}}>⚙️</button>
+            <button style={{fontSize: 40}}>⚙️</button>
           </Link>
         </div>
       </div>

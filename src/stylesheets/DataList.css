@@ -1,4 +1,7 @@
-
+.datalist{
+  background-color: white;
+  
+}
 
 .datalist-portion{
   padding: 30px 50px;
@@ -6,6 +9,7 @@
   flex-direction: column;
   background-color: white;
   width: 100%;
+  border-radius: 30%;
 }
 
 .datalist h1{

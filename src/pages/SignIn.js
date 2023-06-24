@@ -42,7 +42,7 @@ const SignIn = (props) => {
   if (onSignUp === true) {
     return (
       <div class="page-signin">
-        <div className="card signin" style={{backgroundColor:"#ffddd6", border: "none"}}>
+        <div className="card signin" style={{backgroundColor:"#ffddd6", border: "#ffddd6"}}>
           <Card.Body className="signin d-flex justify-content-center" style={{padding:0}}>
             <h1 className="text-center">SIGN UP</h1>
             <Form>
@@ -65,7 +65,7 @@ const SignIn = (props) => {
               </div>
             </Form>
             <div className="w-100 text-center" style={{opacity: 0.7}}>
-            Already a User? <span className="redirect" onClick={() => {setOnSignUp(false)}} style={{color: "#f1b6ac", opacity: 1}}>Log in</span>
+            Already a User? <span className="redirect" onClick={() => {setOnSignUp(false)}} style={{color: "#B88178", opacity: 1}}>Log in</span>
             </div>
           </Card.Body>
         </div>
@@ -93,7 +93,7 @@ const SignIn = (props) => {
               </div>
             </Form>
             <div className="w-100 text-center" style={{opacity: 0.7}}>
-            Don't have an account yet? <span className="redirect" onClick={() => {setOnSignUp(true)}} style={{color: "#f1b6ac", opacity: 1}}>Sign up here!</span>
+            Don't have an account yet? <span className="redirect" onClick={() => {setOnSignUp(true)}} style={{color: "#B88178", opacity: 1}}>Sign up here!</span>
             </div>
           </Card.Body>
         </div>
