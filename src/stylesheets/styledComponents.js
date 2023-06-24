@@ -70,14 +70,14 @@ const MessageDiv = styled.div`
 `;
 
 const PrimaryButton = styled.div`
-  background-color: var(--primary);
+  background-color: #f1b6ac;
   border-radius: 50px;
   width: ${props => props.width || "100%"};
   color: white;
-  font-weight: 500;
-  font-size: 40px;
-  margin: 50px auto;
-  padding: 30px 0;
+  // font-weight: 100;
+  font-size: 30px;
+  margin: 30px auto;
+  padding: 10px 0;
   transition: 0.1s linear all;
   text-align: center;
   &: hover{
@@ -87,8 +87,8 @@ const PrimaryButton = styled.div`
 
 const BackArrowDiv = styled.div`
   position: absolute;
-  top: 0;
-  left: 50px;
+  top: 15px;
+  left: 20px;
   color: var(--primary-letter);
   font-size: 40px;
   z-index: 12;

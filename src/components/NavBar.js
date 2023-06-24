@@ -24,7 +24,7 @@ const NavBar = () => {
     <Navbar collapseOnSelect expand="lg" style={{ backgroundColor: "white" }}>
       <Container>
         <Navbar.Brand>
-          <img src="logo for code.svg" height="40" alt="logo"/>
+          <img src="NutriZZ_logo.svg" height="40" alt="logo"/>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">

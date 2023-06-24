@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import {PrimaryButton, BackArrowDiv} from '../stylesheets/styledComponents';
 import '../stylesheets/Configure.css';
 import firebase from '../firebase';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Configure = (props) => {
 
@@ -44,30 +45,42 @@ const Configure = (props) => {
   return (
     <div className="page-configure">
       <div className="page-configure-top">
-        <h1>Set Configurations</h1>
+        <h1>User Profile</h1>
       </div>
 
-      <div className="page-configure-inputs">
-        <div className="page-configure-inputDiv">
-          <h2>Calorie Goal: </h2>
-          <input type="number" min="1200" id="page-configure-calories"/>
-        </div>
-        <div className="page-configure-inputDiv">
-          <h2>Carbs Goal: </h2>
-          <input type="number" min="0" id="page-configure-carbs" />
-        </div>
-        <div className="page-configure-inputDiv">
-          <h2>Protein Goal: </h2>
-          <input type="number" min="0" id="page-configure-protein" />
-        </div>
-        <div className="page-configure-inputDiv">
-          <h2>Fat Goal: </h2>
-          <input type="number" min="0" id="page-configure-fat" />
-        </div>
-      </div>
+      <Container className="page-configure-inputs">
+        <Row>
+          <Col>
+            <div className="page-configure-inputDiv">
+              <h2>Calorie Goal:</h2>
+              <input type="number" min="1200" id="page-configure-calories"/>
+            </div>
+          </Col>
+          <Col>
+            <div className="page-configure-inputDiv">
+              <h2>Carbs Goal: </h2>
+              <input type="number" min="0" id="page-configure-carbs" />
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <div className="page-configure-inputDiv">
+              <h2>Protein Goal: </h2>
+              <input type="number" min="0" id="page-configure-protein" />
+            </div>
+          </Col>
+          <Col>
+            <div className="page-configure-inputDiv">
+              <h2>Fat Goal: </h2>
+              <input type="number" min="0" id="page-configure-fat" />
+            </div>
+          </Col>
+        </Row>
+      </Container>
 
       <div className="page-configure-submit">
-        <PrimaryButton width="60%" onClick={submit}>Submit</PrimaryButton>
+        <PrimaryButton width="25%" onClick={submit}>Submit</PrimaryButton>
       </div>
 
 

@@ -46,52 +46,45 @@ const DataSheet = (props) => {
   }, [props]);
 
   return (
-    <div className="datasheet">
+    <div  className="datasheet">
       <BackArrowDiv>
-        <Link to="/" className="link">
+        <Link to="/">
           <h2>⬅</h2>
         </Link>
       </BackArrowDiv>
       <h1 style={{marginTop: "30px", color: "black"}}>Nutritional Data</h1>
       <div className="container">
-      {showDataSheet ? (
-        <>
-          <div className="card datasheet-section" style={{border:"none"}}>
-            <DataList data={data} goal={goal} className="datasheet-datalist"/>
-          </div>
-          <div className="arrow-container">
-            <button className="arrow-button" onClick={toggleDataSheet}>
-              →
-            </button>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="arrow-container">
-            <button className="arrow-button" onClick={toggleDataSheet}>
-              <div className="btn-content" style={{fontWeight: "30px"}}>←</div>
-            </button>
-          </div>
-          <div className="card mini-datasheet-section" style={{border:"none"}}>
-            <div className="custom-grid-container">
-              {
-                data.nutrients.map((nutrient) => {
-                  return <div className="page-food-nutrient" key={nutrient.name} >
-                    <div className="page-food-nutrient-top">
-                      <h4 className="page-food-nutrient-top-text">{nutrient.name}</h4>
-                      <h4 className="page-food-nutrient-top-text">{nutrient.amount + nutrient.unit}</h4>
-                    </div>
-                    <div>
-                      <h4 className="page-food-nutrient-percent">{nutrient.percentOfDailyNeeds}% of Daily Needs</h4>
-                    </div>
+        {showDataSheet && (
+        <div className="card datasheet-section" style={{border:"none"}}>
+          <DataList data={data} goal={goal} className="datasheet-datalist"/>
+        </div>
+        )}
+        {!showDataSheet && (
+        <div className="card mini-datasheet-section" style={{border:"none"}}>
+          <div className="custom-grid-container">
+            {
+              data.nutrients.map((nutrient) => {
+                return <div className="page-food-nutrient" key={nutrient.name} >
+                  <div className="page-food-nutrient-top">
+                    <h4 className="page-food-nutrient-top-text">{nutrient.name}</h4>
+                    <h4 className="page-food-nutrient-top-text">{nutrient.amount + nutrient.unit}</h4>
                   </div>
-                })
-              }
-            </div>
+                  <div>
+                    <h4 className="page-food-nutrient-percent">{nutrient.percentOfDailyNeeds}% of Daily Needs</h4>
+                  </div>
+                </div>
+              })
+            }
           </div>
-        </>
-      )}
+        </div>
+        )}
+        <div className="arrow-container">
+          <button className="arrow-button" onClick={toggleDataSheet}>
+          {showDataSheet ? '→' : '←'}
+          </button>
+        </div>
       </div>
+      
     </div>
   );
 }

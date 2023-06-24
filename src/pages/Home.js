@@ -8,6 +8,7 @@ import firebase from '../firebase';
 import {formatDate} from '../functions/helperFunctions';
 import {dataFrame} from '../functions/constants';
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Home = (props) => {
   // TODO: Listen to firestore change, update props
@@ -84,7 +85,33 @@ const Home = (props) => {
         <DateChanger date={date} dispatchDate={props.dispatchDate}/>
         
         <div className="page-home-mealbars">
-          {meals.map((meal) => <MealBar meal={meal} totalCal={data.meals[meal].sumCal} key={meal}/>)}
+          {/* {meals.map((meal) => <MealBar meal={meal} totalCal={data.meals[meal].sumCal} key={meal}/>)} */}
+          <div>
+            <Row>
+              <Col>
+                <MealBar class="left" meal={meals[0]} totalCal={data.meals[meals[0]].sumCal} />
+              </Col>
+              <Col/>
+            </Row>
+            <Row>
+              <Col/>
+              <Col>
+                <MealBar className="right" meal={meals[1]} totalCal={data.meals[meals[1]].sumCal} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <MealBar class="left" meal={meals[2]} totalCal={data.meals[meals[2]].sumCal} />
+              </Col>
+              <Col/>
+            </Row>
+            <Row>
+              <Col/>
+              <Col>
+                <MealBar className="right" meal={meals[3]} totalCal={data.meals[meals[3]].sumCal} />
+              </Col>
+            </Row>
+          </div>
         </div>
         <div className="page-home-configure">
           <Link to="/configure">

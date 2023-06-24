@@ -29,7 +29,7 @@ button{
 }
 
 .page-home-mealbars{
-  padding: 50px 60px;
+  padding: 30px 60px;
 }
 
 .page-home-configure{
@@ -48,4 +48,12 @@ button{
 .page-home-configure button:focus{
   border: none;
   outline: none;
+}
+
+.left {
+  margin-left: 10px;
+}
+
+.right {
+  margin-top: -15px;
 }

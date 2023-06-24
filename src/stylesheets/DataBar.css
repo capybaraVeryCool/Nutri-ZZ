@@ -24,17 +24,21 @@
   color: var(--primary-letter);
 }
 .databar-data h2{
-  font-size: 40px;
-  margin: 20px 0;
-  color: #869f77;
+  font-size: 30px;
+  margin: 10px 0px;
+  color: #46826F;
 }
 .databar-data h3{
-  font-size: 25px;
+  font-size: 15px;
   margin: 5px 0;
   color: #869f77;
 }
 
 .databar-button{
-  margin-top: 50px;
+  margin-bottom: 20px;
   padding: 10px 20px;
+  opacity: 0.7;
+  /* border: none; */
+  background-color: #f1b6ac;
+  border-radius: 10px;
 }
