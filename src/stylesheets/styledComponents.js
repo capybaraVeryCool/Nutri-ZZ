@@ -10,6 +10,10 @@ const Dropdown = styled.div`
   &:hover{
     .dropdown-content {
       display: block;
+<<<<<<< HEAD
+=======
+      cursor: pointer;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
     }
   }
 
@@ -70,6 +74,7 @@ const MessageDiv = styled.div`
 `;
 
 const PrimaryButton = styled.div`
+<<<<<<< HEAD
   background-color: var(--primary);
   border-radius: 50px;
   width: ${props => props.width || "100%"};
@@ -78,6 +83,32 @@ const PrimaryButton = styled.div`
   font-size: 40px;
   margin: 50px auto;
   padding: 30px 0;
+=======
+  background-color: #f1b6ac;
+  border-radius: 50px;
+  width: ${props => props.width || "100%"};
+  color: white;
+  // font-weight: 100;
+  font-size: 20px;
+  margin: 10px auto;
+  padding: 10px 5px;
+  transition: 0.1s linear all;
+  text-align: center;
+  &: hover{
+    background-color: var(--primary-dark);
+  }
+`;
+
+const SecButton = styled.div`
+  background-color: #f1b6ac;
+  border-radius: 50px;
+  width: ${props => props.width || "100%"};
+  color: white;
+  // font-weight: 100;
+  font-size: 25px;
+  margin: 10px auto;
+  padding: 10px 0;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   transition: 0.1s linear all;
   text-align: center;
   &: hover{
@@ -87,13 +118,26 @@ const PrimaryButton = styled.div`
 
 const BackArrowDiv = styled.div`
   position: absolute;
+<<<<<<< HEAD
   top: 0;
   left: 50px;
   color: var(--primary-letter);
   font-size: 40px;
   z-index: 12;
+=======
+  top: 2px;
+  left: 30px;
+  color: var(--primary-letter);
+  font-size: 40px;
+  z-index: 12;
+  background: transparent;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 `;
 
 
 
+<<<<<<< HEAD
 export {Dropdown, DropdownElement, MessageDiv, PrimaryButton, BackArrowDiv};
+=======
+export {Dropdown, DropdownElement, MessageDiv, PrimaryButton, BackArrowDiv, SecButton};
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343

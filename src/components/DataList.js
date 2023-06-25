@@ -19,9 +19,15 @@ const DataList = (props) => {
   }
 
   const typeColor = {
+<<<<<<< HEAD
     fat: "rgb(160, 192, 160)",
     protein: "rgb(128, 155, 135)",
     carb: "rgb(106, 128, 115)",
+=======
+    fat: "#ffddd6",
+    protein: "#f1b6ac",
+    carb: "#fde9ea",
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   }
 
   const typeName = {
@@ -42,7 +48,11 @@ const DataList = (props) => {
           <h2>{`${props.goal -140}-${props.goal}`} cals</h2>
         </div>
         <div className="datalist-info">
+<<<<<<< HEAD
           <h2>Calories</h2>
+=======
+          <h2>Calories consumed</h2>
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
           <h2>{props.data.sumCal} cals</h2>
         </div>
         <hr/>
@@ -70,7 +80,11 @@ const DataList = (props) => {
         </div>
       </div>
 
+<<<<<<< HEAD
       <div className="datalist-portion">
+=======
+      <div className="datalist-portion" style={{marginTop:"-20px"}}>
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
         <div className="datalist-info">
           <h2>Calories</h2>
           <h2>{props.data.sumCal} cals</h2>

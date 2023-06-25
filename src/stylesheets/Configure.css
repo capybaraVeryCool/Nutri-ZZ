@@ -1,6 +1,7 @@
 
 
 .page-configure-top{
+<<<<<<< HEAD
   background-color: var(--primary);
   border-radius: 0 0 50px 50px;
 }
@@ -9,6 +10,16 @@
   width:fit-content;
   margin: 0 auto;
   padding: 100px 0;
+=======
+  background-color: #f1b6ac;
+  /* border-radius: 0 0 5% 5%; */
+}
+.page-configure-top h1{
+  font-size: 40px;
+  width:fit-content;
+  margin: 0 auto;
+  padding: 50px 0;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   color: white;
 }
 
@@ -26,6 +37,7 @@
   margin: 40px 0;
 }
 .page-configure-inputDiv h2{
+<<<<<<< HEAD
  font-size: 40px;
 }
 
@@ -36,5 +48,18 @@
   outline: none;
   width: 200px;
   margin-left: 50px;
+=======
+ font-size: 20px;
+ white-space: nowrap;
+}
+
+.page-configure-inputDiv input{
+  font-size: 20px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  width: 100px;
+  margin-left: 30px;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 
  }

@@ -1,16 +1,32 @@
 .foodbar{
+<<<<<<< HEAD
   width: 85%;
   background-color: var(--primary-letter);
   box-shadow: 8px 8px var(--light-gray);
   border: 2px solid var(--gray);
   padding: 20px 40px;
   margin: 30px 0;
+=======
+  width: 30vw;
+  background-color: var(--light);
+  box-shadow: 8px 8px var(--light-gray);
+  border: 2px solid var(--gray);
+  padding: 10px 40px;
+  margin: 0;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   transition: 0.1s all linear;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+<<<<<<< HEAD
 }
+=======
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 .foodbar:hover{
   box-shadow: 4px 4px var(--light-gray);
   transform: translate(4px,4px);
@@ -22,11 +38,20 @@
 }
 
 .foodbar-text h2{
+<<<<<<< HEAD
   font-size: 40px;
   font-weight: 500;
 }
 .foodbar-text h3{
   font-size: 30px;
+=======
+  font-size: 20px;
+  opacity: 0.7;
+}
+.foodbar-text h3{
+  font-size: 30px;
+  opacity: 0.7;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
 
 .foodbar button{
@@ -44,8 +69,13 @@
 }
 
 .foodbar img{
+<<<<<<< HEAD
   width: 150px;
   height: 150px;
+=======
+  width: 50px;
+  height: 50px;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   background-size: cover;
   border-radius: 50%;
   margin-right: 30px;
@@ -55,4 +85,19 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+<<<<<<< HEAD
 }
+=======
+}
+
+@media (max-width: 480px) {
+  .foodbar img {
+    display: none;
+  }
+}
+
+
+.foodbar-right {
+  flex-grow: 1; /* Allow the right item to grow and take remaining space */
+}
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343

@@ -1,25 +1,43 @@
 .page-food {
   background-color: var(--light);
+<<<<<<< HEAD
   min-height: 100vh;
+=======
+  /* min-height: 100vh; */
+  height: fit-content;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
 
 .page-food-top{
   background-color: var(--primary);
+<<<<<<< HEAD
   height: 35vh;
+=======
+  height: 20vh;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   position: relative;
 }
 .page-food-top h2{
   position: absolute;
   bottom: 20px;
+<<<<<<< HEAD
   left: 20px;
   color: white;
   font-weight: 500;
   font-size: 60px;
   margin: 0;
+=======
+  left: 80px;
+  color: #e57865;
+  font-size: 35px;
+  margin: 0;
+  text-transform: capitalize;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
 
 
 .page-food-section{
+<<<<<<< HEAD
   margin: 40px 30px;
   padding: 20px 70px;
   background-color: var(--primary-letter);
@@ -29,6 +47,18 @@
 }
 .page-food-section h3{
   font-size: 40px;
+=======
+  margin: 40px 80px;
+  padding: 20px 70px;
+  background-color: white;
+  width: auto;
+}
+.page-food-section h2{
+  font-size: 20px;
+}
+.page-food-section h3{
+  font-size: 25px;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
 
 .page-food-inputs, .page-food-macros{
@@ -39,11 +69,23 @@
   align-items: center;
 }
 
+<<<<<<< HEAD
 #page-food-amount{
   border: none;
   border-bottom: 1px solid black;
   font-size: 55px;
   width: 200px;
+=======
+.page-food-macros{
+  margin: 30px 0px;
+}
+
+#page-food-amount{
+  border: none;
+  border-bottom: 1px solid black;
+  font-size: 20px;
+  width: 50px;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
 #page-food-amount:focus{
   border: none;
@@ -62,7 +104,11 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+<<<<<<< HEAD
   margin: 20px 0;
+=======
+  /* margin: 10px 0; */
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   border-bottom: 1px solid black;
 }
 .page-food-nutrient-top-text{
@@ -87,4 +133,10 @@
   left: calc(50vw - 30%);
 }
 
+<<<<<<< HEAD
 
+=======
+.container{
+  display: flex;
+}
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343

@@ -1,5 +1,9 @@
 .databar{
+<<<<<<< HEAD
   padding: 50px 0;
+=======
+  padding-top: 10px;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   color: var(--primary-letter);
   display: flex;
   flex-direction: column;
@@ -12,6 +16,13 @@
   align-items: center;
   width: 100%;
 }
+<<<<<<< HEAD
+=======
+
+.databar-top {
+  margin-top: 30px;
+}
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 .databar-bottom{
   margin-top: 50px;
   align-self: center;
@@ -24,6 +35,7 @@
   color: var(--primary-letter);
 }
 .databar-data h2{
+<<<<<<< HEAD
   font-size: 40px;
   margin: 20px 0;
 }
@@ -35,4 +47,23 @@
 .databar-button{
   margin-top: 50px;
   padding: 10px 20px;
+=======
+  font-size: 30px;
+  margin: 10px 0px;
+  color: #46826F;
+}
+.databar-data h3{
+  font-size: 15px;
+  margin: 5px 0;
+  color: #869f77;
+}
+
+.databar-button{
+  margin-bottom: 20px;
+  padding: 10px 20px;
+  opacity: 0.7;
+  /* border: none; */
+  background-color: #f1b6ac;
+  border-radius: 10px;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }

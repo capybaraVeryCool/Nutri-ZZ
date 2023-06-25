@@ -6,7 +6,11 @@ import '../stylesheets/ProgressCircle.css'
 const DataBar = (props) => {
 
   const fontSize2 = {
+<<<<<<< HEAD
     fontSize: `${Math.round(Number(props.circleSize)/5)}px`
+=======
+    fontSize: `${Math.round(Number(props.circleSize)/8)}px`
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   }
   const fontSize3 = {
     fontSize: `${Math.round(Number(props.circleSize)/12)}px`

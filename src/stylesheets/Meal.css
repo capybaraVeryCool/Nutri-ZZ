@@ -9,7 +9,11 @@
 .page-meal-top{
   background-color: var(--primary);
   color: white;
+<<<<<<< HEAD
   padding: 80px 50px 60px 50px;
+=======
+  padding: 30px;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   border-radius: 0 0 5% 5%;
   width: 100%;
 }
@@ -20,7 +24,17 @@
 }
 
 .page-meal-top h2{
+<<<<<<< HEAD
   font-size: 35px;
+=======
+  font-size: 30px;
+  color: #e57865;
+  text-transform: capitalize;
+}
+.page-meal-top h3{
+  font-size: 20px;
+  color: #e57865;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
 
 .page-meal-search-link{
@@ -30,12 +44,27 @@
 }
 
 
+<<<<<<< HEAD
 .page-meal-datalist, .page-meal-foodlist{
   width: 100%;
 }
+=======
+.page-meal-datalist{
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 .page-meal-foodlist{
   display: flex;
   flex-direction: column;
   align-items: center;
+<<<<<<< HEAD
+=======
+  width: 50%;
+>>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
 
