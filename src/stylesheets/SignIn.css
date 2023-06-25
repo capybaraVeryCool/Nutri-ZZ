@@ -2,23 +2,11 @@
 .page-signin{
   background-color: var(--primary);
   margin: 0;
-<<<<<<< HEAD
-  min-height: 100vh;
-=======
   min-height: 89vh;
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   color: var(--primary-letter);
   display: flex;
   flex-direction: column;
   align-items: center;
-<<<<<<< HEAD
-  padding: 10px;
-}
-
-.page-signin h2{
-  margin: 0;
-}
-=======
   justify-content: center;
   /* padding-top: 40px; */
 }
@@ -41,43 +29,11 @@
 opacity: 0.7; 
 background-color: #f1b6ac; 
 } 
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 
 .signin{
   display: flex;
   flex-direction: column;
   width: fit-content;
-<<<<<<< HEAD
-  padding: 50px;
-  align-items: center;
-  border: 2px solid var(--light-gray);
-  margin: 40px auto;
-}
-
-.signin h1{
-  font-size: 90px;
-  margin: 10px 0;
-}
-
-.signin input{
-  max-width: 380px;
-  font-size: 50px;
-  padding: 10px;
-  margin: 10px 0;
-  border-radius: 5%;
-  border: 1px solid var(--primary-letter);
-}
-
-.signin button{
-  font-size: 30px;
-  border: 1px solid var(--primary-letter);
-  background-color: var(--primary-letter);
-  padding: 5px 50px;
-  border-radius: 20%;
-  color: var(--primary);
-  margin-top: 20px;
-}
-=======
   /* padding: 50px; */
   align-items: center;
   border: 2px solid var(--light-gray);
@@ -110,17 +66,10 @@ background-color: #f1b6ac;
 }
 
 
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 .signin h4{
   margin: 15px 0 0 0;
 }
 
-<<<<<<< HEAD
-#signin-btnOther{
-  font-size: 20px;
-  margin-top: 5px;
-}
-=======
 .signin h1{
   font-weight: bold;
 }
@@ -139,4 +88,3 @@ background-color: #f1b6ac;
   font-size: 20;
   line-height: 2.5;
 }
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343

@@ -5,10 +5,6 @@ import {formatDate} from '../functions/helperFunctions';
 import DataList from '../components/DataList.js';
 import '../stylesheets/DataSheet.css';
 import { Link } from "react-router-dom";
-<<<<<<< HEAD
-
-const DataSheet = (props) => {
-=======
 import {PrimaryButton, BackArrowDiv} from '../stylesheets/styledComponents';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -20,7 +16,6 @@ const DataSheet = (props) => {
         setShowDataSheet(!showDataSheet);
     };
   
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   const [goal, setGoal] = useState(1400);
   const [data, setData] = useState(dataFrame);
 
@@ -34,13 +29,8 @@ const DataSheet = (props) => {
     let abortController = new AbortController();
     let aborted = abortController.signal.aborted;
     let firestore = firebase.firestore();
-<<<<<<< HEAD
     if (firebase.auth()?.currentUser && aborted!==true){
       firestore.collection("users").doc(firebase.auth()?.currentUser?.uid).collection('days').doc(formatDate(props.date)).get().then((myDoc) => {
-=======
-    if (firebase.auth().currentUser && aborted!==true){
-      firestore.collection("users").doc(firebase.auth().currentUser.uid).collection('days').doc(formatDate(props.date)).get().then((myDoc) => {
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 
         aborted = abortController.signal.aborted;
         if (aborted!==true){
@@ -58,33 +48,6 @@ const DataSheet = (props) => {
   }, [props]);
 
   return (
-<<<<<<< HEAD
-    <div  className="datasheet">
-      <div className="page-datasheet-back-div">
-        <Link to="/">
-          <h2>⬅</h2>
-        </Link>
-      </div>
-      <div className="datasheet-section">
-        <DataList data={data} goal={goal} className="datasheet-datalist"/>
-      </div>
-      <div className="datasheet-section">
-        {
-          data.nutrients?.map((nutrient) => {
-            return <div className="page-food-nutrient" key={nutrient.name} >
-              <div className="page-food-nutrient-top">
-                <h4 className="page-food-nutrient-top-text">{nutrient.name}</h4>
-                <h4 className="page-food-nutrient-top-text">{nutrient.amount + nutrient.unit}</h4>
-              </div>
-              <div>
-                <h4 className="page-food-nutrient-percent">{nutrient.percentOfDailyNeeds}% of Daily Needs</h4>
-              </div>
-            </div>
-          })
-        }
-      </div>
-
-=======
     <div className="datasheet">
       <BackArrowDiv>
         <Link to="/" className="link">
@@ -131,7 +94,6 @@ const DataSheet = (props) => {
         </div>
       )}
       </div>
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
     </div>
   );
 }

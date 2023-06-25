@@ -54,11 +54,7 @@ const DataBar = (props) => {
       setCalMessage("Calories Over");
       setProgressCalColor({color: "rgb(245, 235, 146)"})
     } else {
-<<<<<<< HEAD
-      setProgressCalColor({color: "white"})
-=======
       setProgressCalColor({color: "#588061"})
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
     }
     if (calc>200){
       calc= 100;
@@ -106,11 +102,7 @@ const DataBar = (props) => {
           <h3>Calories Eaten</h3>
         </div>
         <div className="databar-calories" style={progressCalColor}>
-<<<<<<< HEAD
-          <ProgressCircle  progress={progressCal} circleSize="480" calories={caloriesLeft} message={calMessage}/>
-=======
           <ProgressCircle  progress={progressCal} circleSize="300" calories={caloriesLeft} message={calMessage}/>
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
         </div>
         <div className="databar-data">
           <h2>{goalCal}</h2>
@@ -120,13 +112,8 @@ const DataBar = (props) => {
       <div className="databar-bottom">
         {
           macros.map((macro, count) => {
-<<<<<<< HEAD
-            return <div className="databar-data" key={macro} style={progressMacroColor[count]}>
-              <h2 style={{color: "white"}}>{macro}</h2>
-=======
             return <div className="databar-data" key={macro} style={progressMacroColor[count]} style={{ marginTop: "0px"}} >
               <h2 style={{color: "#869f77"}} >{macro}</h2>
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
               <ProgressCircle  progress={progressMacro[count]} circleSize="240" calories={macrosLeft[count]} message={macroMessage[count]}/>
             </div>
           })
@@ -134,11 +121,7 @@ const DataBar = (props) => {
 
       </div>
       <Link to={`/datasheet`}>
-<<<<<<< HEAD
-        <button className="databar-button">📊 Nutrient Data</button>
-=======
         <button className="databar-button" style={{border: "none", opacity: 0.5, fontSize: 20}}>📊 Nutrient Data</button>
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
       </Link>
     </div>
   );

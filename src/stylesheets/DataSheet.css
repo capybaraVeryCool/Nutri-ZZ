@@ -8,20 +8,6 @@
 }
 
 .datasheet-section{
-<<<<<<< HEAD
-  width: 90%;
-  margin: 150px 0;
-  background-color: var(--primary-letter);
-  padding: 30px;
-}
-
-.page-datasheet-back-div{
-  position: absolute;
-  top: 0;
-  left: 50px;
-  color: var(--primary);
-  font-size: 40px;
-=======
   width: 80%;
   margin: 30px 0;
   background-color: var(--light); /*do not change*/
@@ -76,5 +62,4 @@
   width: 100px;
   height: 100px;
   z-index: 12 ;
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }

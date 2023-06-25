@@ -2,29 +2,18 @@ button{
   background-color: transparent;
   border: none;
   font-size: 30px;
-<<<<<<< HEAD
-}
-
-.page-home{
-  width: 100vw;
-=======
   padding: 10px 10px;
 }
 
 .page-home{
   /* width: 100vw; */
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   min-height: 100vh;
 }
 
 .page-home-top{
   background-color: var(--primary);
   color: var(--primary-letter);
-<<<<<<< HEAD
-  padding: 15px;
-=======
   padding: 0px;
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   border-radius: 0 0 5% 5%;
 }
 .page-home-top button{
@@ -40,28 +29,16 @@ button{
 }
 
 .page-home-mealbars{
-<<<<<<< HEAD
-  padding: 50px 60px;
-=======
   padding: 30px 60px;
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
 
 .page-home-configure{
   position: absolute;
-<<<<<<< HEAD
-  top: 0;
-  right: 50px;
-}
-.page-home-configure button{
-  font-size: 80px;
-=======
   top: -2px;
   right: 25px;
 }
 .page-home-configure button{
   /* font-size: 50px; */
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
   color: white;
   transition: 0.2s all linear;
 }
@@ -71,8 +48,6 @@ button{
 .page-home-configure button:focus{
   border: none;
   outline: none;
-<<<<<<< HEAD
-=======
 }
 
 .left {
@@ -81,5 +56,4 @@ button{
 
 .right {
   margin-top: -15px;
->>>>>>> 7f5d0222a07d47dd726706267429f10b4feb0343
 }
