@@ -1,4 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;500&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@500&family=Roboto&display=swap');
+
 
 :root {
   --primary: #FFDDD6;
@@ -17,8 +19,8 @@
 
 * {
   box-sizing: border-box;
-  /* font-family: 'Poppins', sans-serif;
-  font-weight: 200; */
+  font-family: 'Roboto', sans-serif;
+  /*font-weight: 200; */
 }
 
 
@@ -36,6 +38,12 @@
   width: 100%;
 }
 
-Container {
+/* Container {
   width: 100%;
+} */
+
+.custom-header {
+  font-family: 'Outfit', sans-serif;
+  /* font-size: 24px;
+  font-weight: bold; */
 }

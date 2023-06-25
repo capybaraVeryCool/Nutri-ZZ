@@ -77,8 +77,8 @@ const Meal = (props) => {
     <div style={{display:"flex"}}>
       <div  className="page-meal">
         <div className="page-meal-top">
-          <h2>{meal}</h2>
-          <h3>{formatDate(props.date)}</h3>
+          <h2 className="custom-header">{meal}</h2>
+          <h3 className="custom-header">{formatDate(props.date)}</h3>
           <div className="page-meal-progress" style={progressColor}>
             <ProgressCircle  progress={progress} circleSize="250" calories={data.sumCal} message={"calories eaten"}/>
           </div>

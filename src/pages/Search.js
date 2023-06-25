@@ -60,7 +60,7 @@ const Search = (props) => {
               <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
             </Link>
           </BackArrowDiv>
-          <h2>{capitalize(meal)}</h2>
+          <h2 className="custom-header">{capitalize(meal)}</h2>
           <input type="text" placeholder="🔍 Search Food" id="page-searchbar" />
         </div>
       </div>

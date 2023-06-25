@@ -103,7 +103,7 @@ const Food = (props) => {
   return (
     <div  className="page-food">
       <div className="page-food-top">
-        <h2>{result.name}</h2>
+        <h2 className="custom-header">{result.name}</h2>
       </div>
 
       <div className="page-food-section">
