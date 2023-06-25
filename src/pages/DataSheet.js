@@ -54,7 +54,7 @@ const DataSheet = (props) => {
           <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
         </Link>
       </BackArrowDiv>
-      <h1 style={{marginTop: "30px", color: "black"}}>Nutritional Data</h1>
+      <h1 className="custom-header" style={{marginTop: "30px", color: "black", opacity: 0.6}}>Nutritional Data</h1>
       <div className="big-datasheet-section" style={{border:"black", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       {showDataSheet ? (
         <div style={{ display: 'flex', marginLeft: "110px"}}>
@@ -63,7 +63,7 @@ const DataSheet = (props) => {
           </div>
           <div className="arrow-container">
             <button className="arrow-button" onClick={toggleDataSheet}>
-              <FontAwesomeIcon icon={faArrowRight} style={{color: "black",fontSize: "40px", opacity: 0.5}} />
+              <FontAwesomeIcon icon={faArrowRight} style={{color: "#e57865",fontSize: "40px", opacity: 0.7}} />
             </button>
           </div>
         </div>
@@ -71,7 +71,7 @@ const DataSheet = (props) => {
         <div style={{ display: 'flex', marginRight: "35px"}}>
           <div className="arrow-container">
             <button className="arrow-button" onClick={toggleDataSheet}>
-              <FontAwesomeIcon icon={faArrowLeft} style={{color: "black",fontSize: "40px", opacity: 0.5}} />
+              <FontAwesomeIcon icon={faArrowLeft} style={{color: "#e57865",fontSize: "40px", opacity: 0.7}} />
             </button>
           </div>
           <div className="mini-datasheet-section" style={{border:"none"}}>

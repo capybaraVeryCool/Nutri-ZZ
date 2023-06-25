@@ -52,9 +52,9 @@ const DataBar = (props) => {
       calc = calc % 100;
       left = sumCalories - goalCal;
       setCalMessage("Calories Over");
-      setProgressCalColor({color: "rgb(245, 235, 146)"})
-    } else {
       setProgressCalColor({color: "#588061"})
+    } else {
+      setProgressCalColor({color: "#e57865"})
     }
     if (calc>200){
       calc= 100;
@@ -75,7 +75,7 @@ const DataBar = (props) => {
       if (calc>100){
         calc = calc % 100;
         left = eatenMacros[i] - goalMacro[i];
-        progColorCopy[i] = {color: "rgb(245, 235, 146)"};
+        progColorCopy[i] = {color: "#588061"};
         copyMacroMessage[i] = "Grams Over";
         
       } else {
@@ -113,7 +113,7 @@ const DataBar = (props) => {
         {
           macros.map((macro, count) => {
             return <div className="databar-data" key={macro} style={progressMacroColor[count]} style={{ marginTop: "0px"}} >
-              <h2 style={{color: "#869f77"}} >{macro}</h2>
+              <h2 style={{color: "#e57865"}} >{macro}</h2>
               <ProgressCircle  progress={progressMacro[count]} circleSize="240" calories={macrosLeft[count]} message={macroMessage[count]}/>
             </div>
           })
