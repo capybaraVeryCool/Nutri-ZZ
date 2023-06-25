@@ -63,7 +63,7 @@ const DataSheet = (props) => {
           </div>
           <div className="arrow-container">
             <button className="arrow-button" onClick={toggleDataSheet}>
-              <FontAwesomeIcon icon={faArrowRight} style={{color: "black",fontSize: "40px", opacity: 0.5}} />
+              <FontAwesomeIcon icon={faArrowRight} style={{color: "#f1b6ac",fontSize: "40px"}} />
             </button>
           </div>
         </div>
@@ -71,7 +71,7 @@ const DataSheet = (props) => {
         <div style={{ display: 'flex', marginRight: "35px"}}>
           <div className="arrow-container">
             <button className="arrow-button" onClick={toggleDataSheet}>
-              <FontAwesomeIcon icon={faArrowLeft} style={{color: "black",fontSize: "40px", opacity: 0.5}} />
+              <FontAwesomeIcon icon={faArrowLeft} style={{color: "f1b6ac",fontSize: "40px"}} />
             </button>
           </div>
           <div className="mini-datasheet-section" style={{border:"none"}}>

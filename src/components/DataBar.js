@@ -54,7 +54,7 @@ const DataBar = (props) => {
       setCalMessage("Calories Over");
       setProgressCalColor({color: "rgb(245, 235, 146)"})
     } else {
-      setProgressCalColor({color: "#588061"})
+      setProgressCalColor({color: "white"})
     }
     if (calc>200){
       calc= 100;
@@ -112,8 +112,8 @@ const DataBar = (props) => {
       <div className="databar-bottom">
         {
           macros.map((macro, count) => {
-            return <div className="databar-data" key={macro} style={progressMacroColor[count]} style={{ marginTop: "0px"}} >
-              <h2 style={{color: "#869f77"}} >{macro}</h2>
+            return <div className="databar-data" key={macro} style={{ ...progressMacroColor[count], marginTop: "0px" }}>
+              <h2 style={{color: "#e57865"}} >{macro}</h2>
               <ProgressCircle  progress={progressMacro[count]} circleSize="240" calories={macrosLeft[count]} message={macroMessage[count]}/>
             </div>
           })
@@ -121,7 +121,7 @@ const DataBar = (props) => {
 
       </div>
       <Link to={`/datasheet`}>
-        <button className="databar-button" style={{border: "none", opacity: 0.5, fontSize: 20}}>📊 Nutrient Data</button>
+        <button className="databar-button" style={{border: "none", fontSize: 20}}>📊 Nutrient Data</button>
       </Link>
     </div>
   );

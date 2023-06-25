@@ -2,7 +2,8 @@ import React, {useState, useEffect} from 'react';
 import '../stylesheets/MealBar.css';
 import {Link} from "react-router-dom";
 import { Container, Row, Col } from 'react-bootstrap';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 const MealBar = (props) => {
 
@@ -12,7 +13,7 @@ const MealBar = (props) => {
   const options = {
     "breakfast" : {
       title: "Breakfast",
-      emoji: "🍳",
+      emoji: "🥐",
     },
     "lunch" : {
       title: "Lunch",
@@ -20,11 +21,11 @@ const MealBar = (props) => {
     },
     "dinner" : {
       title: "Dinner",
-      emoji: "🍲",
+      emoji: "🍝",
     },
     "snacks" : {
       title: "Snacks",
-      emoji: "🍐",
+      emoji: "🍪",
     },
   }
 
@@ -52,7 +53,9 @@ const MealBar = (props) => {
             </Col>
             <Col className="mealbar-button" style={{padding: 0}}>
               <Link to={`/meal/${meal}/search`}>
-                <button >➕</button>
+                <button >
+                <FontAwesomeIcon icon={faPlus} style={{color: "#f1b6ac",}} />
+                </button>
               </Link>
             </Col>
           {/* </Row> */}

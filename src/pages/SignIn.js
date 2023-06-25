@@ -87,7 +87,7 @@ const SignIn = (props) => {
                 <Form.Control type="password" id="logIn-password" autoComplete="off"/>
               </Form.Group>
               <div className="text-center" style={{justifyContent: "center", alignItems:"center"}}>
-                <Button type="submit" onClick={logIn} style={{backgroundColor: "#f1b6ac",border: "none",fontSize:18, lineHeight:1.5, display: "inline-block"}}>
+                <Button onClick={logIn} style={{backgroundColor: "#f1b6ac",border: "none",fontSize:18, lineHeight:1.5, display: "inline-block"}}>
                   Log In
                 </Button>
               </div>
