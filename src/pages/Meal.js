@@ -19,7 +19,7 @@ const Meal = (props) => {
   const [data, setData] = useState(dataFrame.meals[meal]);
   const [progressColor, setProgressColor] = useState({color: "white"});
   const [progress, setProgress] = useState(0);
-  const [isSigned, setIsSigned] = useState(!!firebase.auth().currentUser);
+  const [isSigned, setIsSigned] = useState(!!firebase.auth()?.currentUser);
   const [allData, setAllData] = useState(dataFrame);
 
   useEffect(() => {
@@ -27,8 +27,8 @@ const Meal = (props) => {
     let abortController = new AbortController();
     let aborted = abortController.signal.aborted;
     let firestore = firebase.firestore();
-    if (firebase.auth().currentUser && aborted!==true){
-      firestore.collection("users").doc(firebase.auth().currentUser.uid).collection('days').doc(formatDate(props.date)).get().then((myDoc) => {
+    if (firebase.auth()?.currentUser && aborted!==true){
+      firestore.collection("users").doc(firebase.auth()?.currentUser?.uid).collection('days').doc(formatDate(props.date)).get().then((myDoc) => {
         aborted = abortController.signal.aborted;
         if (aborted!==true){
           setData(myDoc.data().meals[meal]);
@@ -46,7 +46,7 @@ const Meal = (props) => {
   }, [props.date, meal, isSigned]);
 
   firebase.auth().onAuthStateChanged(() => {
-    setIsSigned(!!firebase.auth().currentUser);
+    setIsSigned(!!firebase.auth()?.currentUser);
   });
 
 
@@ -68,7 +68,7 @@ const Meal = (props) => {
 
   const updatedFullData = (updatedFullData) => {
     var db = firebase.firestore();
-    db.collection('users').doc(firebase.auth().currentUser.uid).collection('days').doc(formatDate(props.date)).update(updatedFullData);
+    db.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('days').doc(formatDate(props.date)).update(updatedFullData);
     props.dispatchDate({type: 'reload'});
   }
 

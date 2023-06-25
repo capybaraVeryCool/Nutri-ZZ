@@ -21,13 +21,13 @@ function App() {
   const [stateDate, dispatchDate] = useReducer(dateReducer, {date: new Date()});
   const [stateResults, dispatchResults] = useReducer(resultsReducer, {results: []});
   const [stateConfig, dispatchConfig] = useReducer(configReducer, {config: defaultConfigure});
-  const [isSigned, setIsSigned] = useState(!!firebase.auth().currentUser);
+  const [isSigned, setIsSigned] = useState(!!firebase.auth()?.currentUser);
 
   // useEffect on [] get config (from firestore) and dispatch update
 
   // SET SIGNED STATUS
   firebase.auth().onAuthStateChanged(() => {
-    setIsSigned(!!firebase.auth().currentUser);
+    setIsSigned(!!firebase.auth()?.currentUser);
   });
 
   // SET CONFIG
@@ -36,7 +36,7 @@ function App() {
     let aborted = abortController.signal.aborted;
     if (isSigned===true ){
       let firestore = firebase.firestore();
-      const usersRef = firestore.collection('users').doc(firebase.auth().currentUser.uid).collection('settings').doc('config')
+      const usersRef = firestore.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('settings').doc('config')
       usersRef.get()
         .then((docSnapshot) => {
             if (docSnapshot.exists) {
@@ -69,18 +69,7 @@ function App() {
           <Route exact path='/datasheet' component={() => <DataSheet date={stateDate.date} config={stateConfig.config} />}/>
           <Route exact path='/configure' component={() => <Configure config={stateConfig.config} dispatchConfig={dispatchConfig}/>}/>
         </Switch>
-      </Router>
-      {/* <Router basename="/">
-        <Switch> 
-          <Route exact path='/' component={() => <Home date={stateDate.date} dispatchDate={dispatchDate} config={stateConfig.config} dispatchConfig={dispatchConfig}/>}/>
-          <Route exact path='/meal/:id' component={() => <Meal date={stateDate.date} dispatchDate={dispatchDate} config={stateConfig.config}/>}/>
-          <Route exact path='/signin' component={() => <SignIn/>}/>
-          <Route exact path='/meal/:id/search' component={() => <Search date={stateDate.date} results={stateResults.results} dispatchResults={dispatchResults}/>}/>
-          <Route exact path='/meal/:id/search/:id' component={() => <Food date={stateDate.date}/>}/>
-          <Route exact path='/datasheet' component={() => <DataSheet date={stateDate.date} config={stateConfig.config} />}/>
-          <Route exact path='/configure' component={() => <Configure config={stateConfig.config} dispatchConfig={dispatchConfig}/>}/>
-        </Switch>
-      </Router> */}
+      </Router >
     </div>
   );
 }

@@ -39,7 +39,7 @@ const Configure = (props) => {
     }
     // update firestore (set it)
     var db = firebase.firestore();
-    db.collection('users').doc(firebase.auth().currentUser.uid).collection('settings').doc('config').update(newConfig)
+    db.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('settings').doc('config').update(newConfig)
     // dispatch config
     props.dispatchConfig({type: 'update', payload: newConfig});
   }

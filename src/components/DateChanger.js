@@ -17,7 +17,7 @@ const DateChanger = (props) => {
         <FontAwesomeIcon icon={faArrowLeft} style={{color: "#f1b6ac",fontSize: "40px"}} />
       </button>
       <div style={{justifyContent: "center", alignItems: "center"}}>
-        <h1 style={{opacity: 0.6}}>{props.date}</h1>
+        <h1>{props.date}</h1>
         <div style={{justifyContent: "center", alignItems: "center", display: "flex"}}>
           <input type="date" id="datechanger-date" onChange={changeDate} style={{opacity: 0.6, textAlign: "center",justifyContent: "center", alignItems: "center", display: "flex", padding: 0}}/>
         </div>
