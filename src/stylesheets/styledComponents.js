@@ -50,11 +50,12 @@ const DropdownElement = styled.h3`
 const MessageDiv = styled.div`
 
   position: relative;
-  width: fit-content;
+  width: "fit-content";
 
   &:hover {
     .component-message {
       display: block;
+      white-space: nowrap;
     }
   }
   .component-message {

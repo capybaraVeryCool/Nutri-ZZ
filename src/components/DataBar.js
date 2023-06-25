@@ -52,9 +52,9 @@ const DataBar = (props) => {
       calc = calc % 100;
       left = sumCalories - goalCal;
       setCalMessage("Calories Over");
-      setProgressCalColor({color: "rgb(245, 235, 146)"})
+      setProgressCalColor({color: "#588061"})
     } else {
-      setProgressCalColor({color: "white"})
+      setProgressCalColor({color: "#e57865"})
     }
     if (calc>200){
       calc= 100;
@@ -75,7 +75,7 @@ const DataBar = (props) => {
       if (calc>100){
         calc = calc % 100;
         left = eatenMacros[i] - goalMacro[i];
-        progColorCopy[i] = {color: "rgb(245, 235, 146)"};
+        progColorCopy[i] = {color: "#588061"};
         copyMacroMessage[i] = "Grams Over";
         
       } else {

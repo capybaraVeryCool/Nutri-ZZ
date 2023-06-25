@@ -8,7 +8,7 @@ import firebase from '../firebase';
 import {formatDate} from '../functions/helperFunctions';
 import {dataFrame} from '../functions/constants';
 import { Link } from "react-router-dom";
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
@@ -117,8 +117,8 @@ const Home = (props) => {
         </div>
         <div className="page-home-configure">
           <Link to="/configure">
-            <button style={{fontSize: 40}}>
-            <FontAwesomeIcon icon={faUser} style={{color: "#f1b6ac",}} />
+            <button>
+              <FontAwesomeIcon icon={faUser} style={{ color: '#f1b6ac', fontSize: "1.5rem"}}/>
             </button>
           </Link>
         </div>

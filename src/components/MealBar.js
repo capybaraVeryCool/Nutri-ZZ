@@ -54,7 +54,7 @@ const MealBar = (props) => {
             <Col className="mealbar-button" style={{padding: 0}}>
               <Link to={`/meal/${meal}/search`}>
                 <button >
-                <FontAwesomeIcon icon={faPlus} style={{color: "#f1b6ac",}} />
+                  <FontAwesomeIcon icon={faPlus} style={{ color: '#f1b6ac', fontSize: '2rem' }} />
                 </button>
               </Link>
             </Col>

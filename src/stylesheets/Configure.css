@@ -1,3 +1,19 @@
+.whole-page {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.image-container {
+  flex: 0 0 33.33%; 
+  margin-left: -500px;
+  /* padding: 10px; */
+}
+
+.page-configure {
+  flex: 1; 
+  height: 100%;
+  /* padding: 10px;  */
+}
 
 
 .page-configure-top{
