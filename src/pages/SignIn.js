@@ -48,15 +48,15 @@ const SignIn = (props) => {
             <Form>
               <Form.Group>
                 <Form.Label className="form-lab">Username</Form.Label>
-                <Form.Control type="text" id="signUp-username" maxLength="12" autoComplete="off"/>
+                <Form.Control type="text" id="signUp-username" />
               </Form.Group>
               <Form.Group>
                 <Form.Label className="form-lab">Email</Form.Label>
-                <Form.Control type="email" id="signUp-email" maxLength="20" autoComplete="off"/>
+                <Form.Control type="email" id="signUp-email" />
               </Form.Group>
               <Form.Group>
                 <Form.Label className="form-lab">Password</Form.Label>
-                <Form.Control type="password" id="signUp-password" maxLength="15" autoComplete="off"/>
+                <Form.Control type="password" id="signUp-password" />
               </Form.Group>
               <div className="text-center" style={{justifyContent: "center", alignItems:"center"}}>
                 <Button onClick={signUp} style={{backgroundColor: "#f1b6ac",border: "none",fontSize:18, lineHeight:1.5, display: "inline-block"}}>
