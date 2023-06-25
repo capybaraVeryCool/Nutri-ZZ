@@ -1,14 +1,30 @@
+.whole-page {
+  display: flex;
+  overflow-x: hidden;
+}
+
+.image-container {
+  flex: 0 0 33.33%; 
+  margin-left: -500px;
+  /* padding: 10px; */
+}
+
+.page-configure {
+  flex: 1; 
+  height: 100%;
+  /* padding: 10px;  */
+}
 
 
 .page-configure-top{
-  background-color: var(--primary);
-  border-radius: 0 0 50px 50px;
+  background-color: #f1b6ac;
+  /* border-radius: 0 0 5% 5%; */
 }
 .page-configure-top h1{
-  font-size: 80px;
+  font-size: 40px;
   width:fit-content;
   margin: 0 auto;
-  padding: 100px 0;
+  padding: 50px 0;
   color: white;
 }
 
@@ -26,15 +42,16 @@
   margin: 40px 0;
 }
 .page-configure-inputDiv h2{
- font-size: 40px;
+ font-size: 20px;
+ white-space: nowrap;
 }
 
 .page-configure-inputDiv input{
-  font-size: 40px;
+  font-size: 20px;
   border: none;
   border-bottom: 1px solid black;
   outline: none;
-  width: 200px;
-  margin-left: 50px;
+  width: 100px;
+  margin-left: 30px;
 
  }

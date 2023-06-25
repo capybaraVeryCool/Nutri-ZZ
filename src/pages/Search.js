@@ -3,6 +3,9 @@ import '../stylesheets/Search.css';
 import {Link, useRouteMatch} from "react-router-dom";
 import {capitalize} from "../functions/helperFunctions";
 import FoodBar from '../components/FoodBar'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { BackArrowDiv } from '../stylesheets/styledComponents';
 
 const Search = (props) => {
   let meal = useRouteMatch('/meal/:id/search').url.split('/');
@@ -52,12 +55,14 @@ const Search = (props) => {
     <div  className="page-search">
       <div className="page-search-top">
         <div className="page-search-nav">
-          <Link to={`/meal/${meal}`}>
-            <button>⬅</button>
-          </Link>
-          <h2>{capitalize(meal)}</h2>
+          <BackArrowDiv>
+            <Link to={`/meal/${meal}`}>
+              <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
+            </Link>
+          </BackArrowDiv>
+          <h2 className="custom-header">{capitalize(meal)}</h2>
+          <input type="text" placeholder="🔍 Search Food" id="page-searchbar" />
         </div>
-        <input type="text" placeholder="🔍 Search Food" id="page-searchbar" />
       </div>
       <div className="page-search-items">
         {

@@ -29,16 +29,16 @@ button{
 }
 
 .page-home-mealbars{
-  padding: 50px 60px;
+  padding: 30px 60px;
 }
 
 .page-home-configure{
   position: absolute;
-  top: 50px;
+  top: -2px;
   right: 25px;
 }
 .page-home-configure button{
-  font-size: 80px;
+  /* font-size: 50px; */
   color: white;
   transition: 0.2s all linear;
 }
@@ -48,4 +48,12 @@ button{
 .page-home-configure button:focus{
   border: none;
   outline: none;
+}
+
+.left {
+  margin-left: 10px;
+}
+
+.right {
+  margin-top: -15px;
 }

@@ -8,6 +8,7 @@ import firebase from '../firebase';
 import {formatDate} from '../functions/helperFunctions';
 import {dataFrame} from '../functions/constants';
 import { Link } from "react-router-dom";
+import { Container, Row, Col } from 'react-bootstrap';
 
 const Home = (props) => {
   // TODO: Listen to firestore change, update props
@@ -77,18 +78,44 @@ const Home = (props) => {
     return (
       <div className="page-home">
         <div className="page-home-top">
-          <button onClick={() => {firebase.auth().signOut()}}>Sign Out</button>
+          <button style={{position: "absolute", top:"15px", left: "15px", border: "none", borderRadius: "10px", backgroundColor:"#ffddd6", fontSize: 20, color: "rgba(0, 0, 0, 0.5)"}} onClick={() => {firebase.auth().signOut()}}>Sign Out</button>
           <DataBar date={date} data={data} config={props.config}/>
         </div>
         
         <DateChanger date={date} dispatchDate={props.dispatchDate}/>
         
         <div className="page-home-mealbars">
-          {meals.map((meal) => <MealBar meal={meal} totalCal={data.meals[meal].sumCal} key={meal}/>)}
+          {/* {meals.map((meal) => <MealBar meal={meal} totalCal={data.meals[meal].sumCal} key={meal}/>)} */}
+          <div className="mealbar-container">
+            <Row>
+              <Col>
+                <MealBar class="left" meal={meals[0]} totalCal={data.meals[meals[0]].sumCal} />
+              </Col>
+              <Col/>
+            </Row>
+            <Row>
+              <Col/>
+              <Col>
+                <MealBar className="right" meal={meals[1]} totalCal={data.meals[meals[1]].sumCal} />
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <MealBar class="left" meal={meals[2]} totalCal={data.meals[meals[2]].sumCal} />
+              </Col>
+              <Col/>
+            </Row>
+            <Row>
+              <Col/>
+              <Col>
+                <MealBar className="right" meal={meals[3]} totalCal={data.meals[meals[3]].sumCal} />
+              </Col>
+            </Row>
+          </div>
         </div>
         <div className="page-home-configure">
           <Link to="/configure">
-            <button style={{fontSize: 50}}>⚙️</button>
+            <button style={{fontSize: 40}}>⚙️</button>
           </Link>
         </div>
       </div>

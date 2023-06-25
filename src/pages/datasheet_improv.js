@@ -74,11 +74,11 @@ const Meal = (props) => {
 
 
   return (
-    <div style={{display:"flex"}}>
+    <div>
       <div  className="page-meal">
         <div className="page-meal-top">
-          <h2 className="custom-header">{meal}</h2>
-          <h3 className="custom-header">{formatDate(props.date)}</h3>
+          <h2>{meal}</h2>
+          <h3>{formatDate(props.date)}</h3>
           <div className="page-meal-progress" style={progressColor}>
             <ProgressCircle  progress={progress} circleSize="250" calories={data.sumCal} message={"calories eaten"}/>
           </div>
@@ -94,13 +94,15 @@ const Meal = (props) => {
           }
         </div>
       </div>
-      <div className="meal-nutri-container" style={{border: "black", margin: "5px", backgroundColor:"ffddd6"}}>
-        <DataList data={data} goal={goalCal}/>
+      <div className="page-meal-datalist">
+        <div>
+          <DataList data={data} goal={goalCal}/>
+        </div>
       </div>
 
       <BackArrowDiv>
         <Link to="/">
-        <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
+          <FontAwesomeIcon icon={faArrowLeft} style={{color: "black",fontSize: "40px", opacity: 0.5}} />
         </Link>
       </BackArrowDiv>
     </div>

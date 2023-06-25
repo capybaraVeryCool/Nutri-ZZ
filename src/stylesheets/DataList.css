@@ -1,18 +1,21 @@
-
+.datalist{
+  background-color: white;
+  
+}
 
 .datalist-portion{
   padding: 30px 50px;
   display: flex;
   flex-direction: column;
-  background-color: var(--primary-letter);
+  background-color: white;
   width: 100%;
-  margin: 30px 0;
+  border-radius: 30%;
 }
 
 .datalist h1{
   width: fit-content;
-  font-size: 3em;
-  font-weight: 500;
+  font-size: 30px;
+  color: var(--primary-letter);
 }
 
 .datalist-info, .datalist-info-pie, .datalist-pie-label{
@@ -30,6 +33,7 @@
 
 .datalist h2{
   width: fit-content;
+  font-size: 20px;
 }
 
 .datalist-pie{
