@@ -75,7 +75,7 @@ const DataBar = (props) => {
       if (calc>100){
         calc = calc % 100;
         left = eatenMacros[i] - goalMacro[i];
-        progColorCopy[i] = {color: "#588061"};
+        progColorCopy[i] = {color: "#f1b6ac"};
         copyMacroMessage[i] = "Grams Over";
         
       } else {

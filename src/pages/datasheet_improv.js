@@ -54,13 +54,13 @@ const Meal = (props) => {
     let calc = Math.round((data.sumCal/goalCal)*100);
     if (calc>100){
       calc = calc % 100;
-      setProgressColor({color: "#588061"})
+      setProgressColor({color: "#f1b6ac"})
     } else {
       setProgressColor({color: "white"})
     }
     if (calc>200){
       calc= 100;
-      setProgressColor({color: "#588061"})
+      setProgressColor({color: "#f1b6ac"})
     }
     setProgress(calc);
   }, [data, goalCal])
