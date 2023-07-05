@@ -4,10 +4,11 @@ import {Link, useRouteMatch} from "react-router-dom";
 import {capitalize} from "../functions/helperFunctions";
 import FoodBar from '../components/FoodBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { BackArrowDiv } from '../stylesheets/styledComponents';
 
 const Search = (props) => {
+  // const searchIcon = <FontAwesomeIcon icon={faSearch} style={{color: "black"}}/>
   let meal = useRouteMatch('/meal/:id/search').url.split('/');
   meal=meal[meal.length-2];
   const [search, setSearch] = useState('');

@@ -1,16 +1,25 @@
 .whole-page {
-  display: flex;
-  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto;
+  height: 100vh;
 }
 
 .image-container {
-  flex: 0 0 33.33%; 
-  margin-left: -500px;
-  /* padding: 10px; */
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
 }
 
+/* .strawberry {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} */
+
 .page-configure {
-  flex: 1; 
+  flex: 3; 
   height: 100%;
   /* padding: 10px;  */
 }
@@ -44,6 +53,7 @@
 .page-configure-inputDiv h2{
  font-size: 20px;
  white-space: nowrap;
+ margin: 0;
 }
 
 .page-configure-inputDiv input{

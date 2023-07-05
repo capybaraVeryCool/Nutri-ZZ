@@ -44,6 +44,7 @@
 
 .custom-header {
   font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
   /* font-size: 24px;
   font-weight: bold; */
 }

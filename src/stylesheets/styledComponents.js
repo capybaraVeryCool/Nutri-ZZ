@@ -84,6 +84,7 @@ const PrimaryButton = styled.div`
   text-align: center;
   &: hover{
     background-color: var(--primary-dark);
+    cursor: pointer;
   }
 `;
 
@@ -100,6 +101,7 @@ const SecButton = styled.div`
   text-align: center;
   &: hover{
     background-color: var(--primary-dark);
+    cursor: pointer;
   }
 `;
 

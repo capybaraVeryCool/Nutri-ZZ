@@ -7,7 +7,7 @@ const DateChanger = (props) => {
 
   const changeDate = (event) => {
     const newDate = new Date(event.currentTarget.value);
-    newDate.setDate(newDate.getDate() + 1);
+    // newDate.setDate(newDate.getDate() + 1);
     props.dispatchDate({type: 'update', payload: newDate});
   }
 

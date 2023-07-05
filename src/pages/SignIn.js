@@ -44,7 +44,7 @@ const SignIn = (props) => {
       <div class="page-signin">
         <div className="card signin" style={{backgroundColor:"#ffddd6", border: "#ffddd6"}}>
           <Card.Body className="signin d-flex justify-content-center" style={{padding:0}}>
-            <h1 className="text-center">SIGN UP</h1>
+            <h1 className="text-center custom-header">Sign Up</h1>
             <Form>
               <Form.Group>
                 <Form.Label className="form-lab">Username</Form.Label>
@@ -76,7 +76,7 @@ const SignIn = (props) => {
       <div class="page-signin">
         <div className="card signin" style={{backgroundColor:"#ffddd6", border: "none"}}>
           <Card.Body className="signin d-flex justify-content-center" style={{padding:0}}>
-            <h1 className="text-center">LOG IN</h1>
+            <h1 className="text-center custom-header">Log In</h1>
             <Form>
               <Form.Group>
                 <Form.Label className="form-lab">Email</Form.Label>
