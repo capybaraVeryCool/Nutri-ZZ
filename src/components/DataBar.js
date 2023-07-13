@@ -40,7 +40,7 @@ const DataBar = (props) => {
 
 
   useEffect(()=> {
-    let sum = eaten -burnt;
+    let sum = eaten - burnt;
     sum = sum<0 ? 0 : sum;
     setSumCalories(sum);
     }, [eaten, burnt]);
@@ -52,9 +52,9 @@ const DataBar = (props) => {
       calc = calc % 100;
       left = sumCalories - goalCal;
       setCalMessage("Calories Over");
-      setProgressCalColor({color: "#588061"})
+      setProgressCalColor({color: "#588061"}) // green
     } else {
-      setProgressCalColor({color: "#e57865"})
+      setProgressCalColor({color: "#e57865"}) // red
     }
     if (calc>200){
       calc= 100;
@@ -75,11 +75,11 @@ const DataBar = (props) => {
       if (calc>100){
         calc = calc % 100;
         left = eatenMacros[i] - goalMacro[i];
-        progColorCopy[i] = {color: "#588061"};
+        progColorCopy[i] = {color: "#588061"}; // green
         copyMacroMessage[i] = "Grams Over";
         
       } else {
-        progColorCopy[i] = {color: "white"};
+        progColorCopy[i] = {color: "#FFFFF3"}; // milk
       }
       if (calc>200){
         calc= 100;
@@ -112,9 +112,9 @@ const DataBar = (props) => {
       <div className="databar-bottom">
         {
           macros.map((macro, count) => {
-            return <div className="databar-data" key={macro} style={progressMacroColor[count]} style={{ marginTop: "0px"}} >
-              <h2 style={{color: "#e57865"}} >{macro}</h2>
-              <ProgressCircle  progress={progressMacro[count]} circleSize="240" calories={macrosLeft[count]} message={macroMessage[count]}/>
+            return <div className="databar-data" key={macro} style={{...progressMacroColor[count], marginTop: "0px",}} >
+              <div className="macroName">{macro}</div>
+              <ProgressCircle  progress={progressMacro[count]} circleSize="250" calories={macrosLeft[count]} message={macroMessage[count]}/>
             </div>
           })
         }
