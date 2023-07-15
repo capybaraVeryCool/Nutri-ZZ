@@ -32,6 +32,4 @@ const MealFoodBar = (props) => {
   );
 }
 
-export default MealFoodBar;
-
-// <h3>{findNutrient(props.food, "Calories")}cal  ⚫  {props.food.quantity}{props.food.unit}</h3> 
+export default MealFoodBar; 

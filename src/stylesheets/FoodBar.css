@@ -5,7 +5,7 @@
   border: 2px solid var(--gray);
   padding: 10px 40px;
   margin: 0;
-  transition: 0.1s all linear;
+  /* transition: 0.1s all linear; */
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -41,7 +41,7 @@
   font-size: 50px;
   right: 50px;
   top: 35%;
-  transition: 0.1s all linear;
+  /* transition: 0.1s all linear; */
 }
 .foodbar button:hover{
   background-color: var(--gray);

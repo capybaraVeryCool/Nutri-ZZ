@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../stylesheets/Meal.css'
-import { useRouteMatch, Link } from "react-router-dom";
+import { useMatch, Link } from "react-router-dom";
 import {formatDate} from '../functions/helperFunctions';
 import ProgressCircle from '../components/ProgressCircle';
 import firebase from '../firebase';
@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Meal = (props) => {
-  let meal = useRouteMatch('/meal/:id').url.split('/');
+  let meal = useMatch('/meal/:id').url.split('/');
   meal=meal[meal.length-1];
   // TODO: Listen to firestore change, update props
   const goalCal = Math.round((props.config.goalCal)/3);
@@ -38,7 +38,7 @@ const Meal = (props) => {
         console.error("Error in Meal: ", error);
       })
     } else {
-      console.log('not logged in cannot update meal');
+      console.log('Not logged in. Unable to update meal.');
     }
     return () => {
       abortController.abort();
@@ -80,7 +80,7 @@ const Meal = (props) => {
           <h2 className="custom-header">{meal}</h2>
           <h3 className="custom-header">{formatDate(props.date)}</h3>
           <div className="page-meal-progress" style={progressColor}>
-            <ProgressCircle  progress={progress} circleSize="250" calories={data.sumCal} message={"calories eaten"}/>
+            <ProgressCircle  progress={progress} circleSize="250" circleThickness="2.2" calories={data.sumCal} message={"calories eaten"}/>
           </div>
         </div>
         <Link to={`${meal}/search`} className="page-meal-search-link link">

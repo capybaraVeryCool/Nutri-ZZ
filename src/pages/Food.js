@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../stylesheets/Food.css';
-import {Link, useRouteMatch} from "react-router-dom";
+import {Link, useMatch} from "react-router-dom";
 import {foodFrame, dataFrame} from '../functions/constants';
 import {formatDate, findNutrient, addFood} from '../functions/helperFunctions';
 import {Dropdown, DropdownElement, MessageDiv , SecButton, BackArrowDiv} from '../stylesheets/styledComponents';
@@ -10,7 +10,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Food = (props) => {
-  const link = useRouteMatch('/meal/:id/search/:id').url.split('/');
+  const link = useMatch('/meal/:id/search/:id').url.split('/');
   const foodId=link[link.length-1];
   let meal = link[link.length-3];
   //

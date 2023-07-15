@@ -5,6 +5,13 @@ import ProgressCircle from './ProgressCircle';
 import {Link} from "react-router-dom";
 
 const DataBar = (props) => {
+  const [reloadPage, setReloadPage] = useState(false);
+  function handleReload() {
+    setReloadPage(true);
+  }
+  if (reloadPage) {
+    window.location.reload();
+  }
 
   const [goalCal, setGoalCal] = useState(props.config.goalCal);
   // Macros: [carb , protein, fat]
@@ -102,7 +109,7 @@ const DataBar = (props) => {
           <h3>Calories Eaten</h3>
         </div>
         <div className="databar-calories" style={progressCalColor}>
-          <ProgressCircle  progress={progressCal} circleSize="300" calories={caloriesLeft} message={calMessage}/>
+          <ProgressCircle progress={progressCal} circleSize="300" circleThickness="1.8" calories={caloriesLeft} message={calMessage}/>
         </div>
         <div className="databar-data">
           <h2>{goalCal}</h2>
@@ -114,14 +121,14 @@ const DataBar = (props) => {
           macros.map((macro, count) => {
             return <div className="databar-data" key={macro} style={{...progressMacroColor[count], marginTop: "0px",}} >
               <div className="macroName">{macro}</div>
-              <ProgressCircle  progress={progressMacro[count]} circleSize="250" calories={macrosLeft[count]} message={macroMessage[count]}/>
+              <ProgressCircle  progress={progressMacro[count]} circleSize="250" circleThickness="2.2" calories={macrosLeft[count]} message={macroMessage[count]}/>
             </div>
           })
         }
 
       </div>
       <Link to={`/datasheet`}>
-        <button className="databar-button" style={{border: "none", opacity: 0.5, fontSize: 20}}>📊 Nutrient Data</button>
+        <button className="databar-button" onClick={handleReload} style={{border: "none", opacity: 0.5, fontSize: 20}}>📊 Nutrient Data</button>
       </Link>
     </div>
   );

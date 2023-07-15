@@ -1,32 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
+import { format, addDays, subDays } from 'date-fns';
+import '../stylesheets/DateChanger.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-// import styled from 'styled-components'
 
 const DateChanger = (props) => {
+  const [selectedDate, setSelectedDate] = useState(new Date());
 
-  const changeDate = (event) => {
-    const newDate = new Date(event.currentTarget.value);
-    // newDate.setDate(newDate.getDate() + 1);
-    props.dispatchDate({type: 'update', payload: newDate});
-  }
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+    props.dispatchDate({ type: 'update', payload: date });
+  };
+
+  const currentDateText = format(selectedDate, 'dd-MM-yyyy');
+
+  const handleBackClick = () => {
+    const newDate = subDays(selectedDate, 1);
+    setSelectedDate(newDate);
+    props.dispatchDate({ type: 'update', payload: newDate });
+  };
+
+  const handleForwardClick = () => {
+    const newDate = addDays(selectedDate, 1);
+    setSelectedDate(newDate);
+    props.dispatchDate({ type: 'update', payload: newDate });
+  };
 
   return (
-    <div  className="datechanger">
-      <button onClick={() => props.dispatchDate({type: 'decrement'})}>
-        <FontAwesomeIcon icon={faArrowLeft} style={{color: "#f1b6ac",fontSize: "40px"}} />
+    <div className="datechanger-container">
+      <button className="arrow-button" onClick={handleBackClick}>
+        <FontAwesomeIcon icon={faArrowLeft} />
       </button>
-      <div style={{justifyContent: "center", alignItems: "center"}}>
-        <h1 style={{opacity: 0.6}}>{props.date}</h1>
-        <div style={{justifyContent: "center", alignItems: "center", display: "flex"}}>
-          <input type="date" id="datechanger-date" onChange={changeDate} style={{opacity: 0.6, textAlign: "center",justifyContent: "center", alignItems: "center", display: "flex", padding: 0}}/>
-        </div>
+      <h1 className="current-date" style={{ textAlign: 'center', paddingTop: '30px' }}>{currentDateText}</h1>
+      <button className="arrow-button" onClick={handleForwardClick}>
+        <FontAwesomeIcon icon={faArrowRight} />
+      </button>
+      <div className="datepicker-wrapper" style={{ textAlign: 'center' }}>
+        <DatePicker
+          selected={selectedDate}
+          onChange={handleDateChange}
+          dateFormat="dd/MM/yyyy"
+          placeholderText="dd/mm/yyyy"
+        />
       </div>
-      <button onClick={() => props.dispatchDate({type: 'increment'})}>
-        <FontAwesomeIcon icon={faArrowRight} style={{color: "#f1b6ac",fontSize: "40px"}} />
-      </button>
     </div>
   );
-}
+};
 
 export default DateChanger;

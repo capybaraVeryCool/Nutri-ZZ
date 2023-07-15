@@ -1,19 +1,50 @@
 import React, {useState, useEffect} from 'react';
 import '../stylesheets/Search.css';
-import {Link, useRouteMatch} from "react-router-dom";
+import {Link, useMatch} from "react-router-dom";
 import {capitalize} from "../functions/helperFunctions";
-import FoodBar from '../components/FoodBar'
+// import FoodBar from '../components/FoodBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
 import { BackArrowDiv } from '../stylesheets/styledComponents';
 
 const Search = (props) => {
-  // const searchIcon = <FontAwesomeIcon icon={faSearch} style={{color: "black"}}/>
-  let meal = useRouteMatch('/meal/:id/search').url.split('/');
-  meal=meal[meal.length-2];
+
+  const FoodBar = (props) => {
+
+    const getNumId = (id) => {
+      const arr = id.split('-');
+      return arr[1];
+    }
+  
+    return (
+      <div style={{margin: "10px 0px"}}>
+        <Link to={`/meal/${props.meal}/search/${getNumId(props.id)}`} className="link">
+          <div  className="foodbar">
+            
+            <div className="foodbar-left">
+              {
+                props.imgSrc ? <img src={props.imgSrc} alt={props.title} /> : null
+              }
+              <div className="foodbar-text">
+                <h2>{capitalize(props.title)}</h2>
+              </div>
+            </div>
+          </div>
+        </Link>
+      </div>
+    );
+  }
+
+  let meal = useMatch('/meal/:id/search').url.split('/');
+  meal = meal[meal.length-2];
   const [search, setSearch] = useState('');
   const baseSrc = "https://spoonacular.com/cdn/ingredients_100x100/";
   const myDispatchResults = props.dispatchResults;
+
+  const handleFoodBarClick = () => {
+    // Refresh the page
+    myDispatchResults({ type: 'update', payload: [] });
+  };
 
   // LISTEN FOR 'ENTER' EVENT AND UPDATE SEARCH INPUT
   useEffect(() => {
@@ -48,6 +79,7 @@ const Search = (props) => {
     }
     return () => {
       abortController.abort();
+      // myDispatchResults({ type: 'update', payload: [] });
     };
   }, [search, myDispatchResults])
 
@@ -57,7 +89,8 @@ const Search = (props) => {
       <div className="page-search-top">
         <div className="page-search-nav">
           <BackArrowDiv>
-            <Link to={`/meal/${meal}`}>
+            {/* <Link to={`/meal/${meal}`}> */}
+            <Link to="/">
               <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
             </Link>
           </BackArrowDiv>
@@ -68,8 +101,11 @@ const Search = (props) => {
       <div className="page-search-items">
         {
           props.results.map((item) => {
-            return <FoodBar key={item.id} id={'foodId-'+item.id} title={item.name} imgSrc={baseSrc+item.image} meal={meal}/>
-          })
+            return (
+            <div onClick={handleFoodBarClick}>
+              <FoodBar key={item.id} id={'foodId-'+item.id} title={item.name} imgSrc={baseSrc+item.image} meal={meal} />
+            </div>
+          )})
         }
       </div>
     </div>
@@ -77,5 +113,3 @@ const Search = (props) => {
 }
 
 export default Search;
-
-
