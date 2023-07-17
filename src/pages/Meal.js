@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../stylesheets/Meal.css'
-import { useMatch, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import {formatDate} from '../functions/helperFunctions';
 import ProgressCircle from '../components/ProgressCircle';
 import firebase from '../firebase';
@@ -12,8 +12,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Meal = (props) => {
-  let meal = useMatch('/meal/:id').url.split('/');
-  meal=meal[meal.length-1];
+  const { id } = useParams();
+  const meal = id;
+  // let meal = useMatch('/meal/:id').url.split('/');
+  // meal=meal[meal.length-1];
+
   // TODO: Listen to firestore change, update props
   const goalCal = Math.round((props.config.goalCal)/3);
   const [data, setData] = useState(dataFrame.meals[meal]);
@@ -83,7 +86,7 @@ const Meal = (props) => {
             <ProgressCircle  progress={progress} circleSize="250" circleThickness="2.2" calories={data.sumCal} message={"calories eaten"}/>
           </div>
         </div>
-        <Link to={`${meal}/search`} className="page-meal-search-link link">
+        <Link to={`/meal/${meal}/search`} className="page-meal-search-link link">
           <PrimaryButton width="20%">Add Food</PrimaryButton>
         </Link>
         <div className="page-meal-foodlist">

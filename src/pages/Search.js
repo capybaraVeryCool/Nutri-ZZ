@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import '../stylesheets/Search.css';
-import {Link, useMatch} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {capitalize} from "../functions/helperFunctions";
+import '../stylesheets/FoodBar.css';
 // import FoodBar from '../components/FoodBar'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
@@ -34,9 +35,10 @@ const Search = (props) => {
       </div>
     );
   }
-
-  let meal = useMatch('/meal/:id/search').url.split('/');
-  meal = meal[meal.length-2];
+  const { id } = useParams();
+  const meal = id;
+  // let meal = useMatch('/meal/:id/search').url.split('/');
+  // meal = meal[meal.length-2];
   const [search, setSearch] = useState('');
   const baseSrc = "https://spoonacular.com/cdn/ingredients_100x100/";
   const myDispatchResults = props.dispatchResults;

@@ -1,9 +1,7 @@
-.datechanger-container {
-    display: 'flex';
-    flex-direction: 'column';
-    align-items: 'center';
-    justify-content: 'center';
-};
-.datepicker-wrapper {
-    margin-top: '16px';
-};
+.calendar-arr-back {
+    margin-right: 50px;
+}
+
+.calendar-arr-fw {
+    margin-left: 50px;
+}
