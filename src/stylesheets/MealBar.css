@@ -3,7 +3,7 @@
   border: 2px solid rgb(216, 216, 216);
   /* padding: 10px 5px; */
   margin: 10px 0px;
-  transition: 0.1s all linear;
+  /* transition: 0.1s all linear; */
   max-width: 50vw;
 }
 .mealbar:hover{
@@ -60,7 +60,7 @@
   font-size: 30px;
   right: 40px;
   top: 50%;
-  transition: 0.1s all linear;
+  /* transition: 0.1s all linear; */
   padding: 0;
   margin: 0;
 }

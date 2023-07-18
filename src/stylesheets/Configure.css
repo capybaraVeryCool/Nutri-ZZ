@@ -1,16 +1,24 @@
 .whole-page {
-  display: flex;
-  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  height: 87.25vh;
 }
 
 .image-container {
-  flex: 0 0 33.33%; 
-  margin-left: -500px;
-  /* padding: 10px; */
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.strawberry {
+  width: auto;
+  height: 100%;
+  /* object-fit: cover; */
 }
 
 .page-configure {
-  flex: 1; 
+  flex: 3; 
   height: 100%;
   /* padding: 10px;  */
 }
@@ -34,16 +42,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 }
 
 .page-configure-inputDiv{
   display: flex;
   flex-direction: row;
+  align-items: center;
   margin: 40px 0;
 }
 .page-configure-inputDiv h2{
  font-size: 20px;
  white-space: nowrap;
+ margin: 0;
 }
 
 .page-configure-inputDiv input{
@@ -51,7 +62,11 @@
   border: none;
   border-bottom: 1px solid black;
   outline: none;
-  width: 100px;
+  width: 80px;
   margin-left: 30px;
+}
 
- }
+ .page-configure-inputDiv span {
+  font-size: 16px;
+  margin-left: 5px;
+}

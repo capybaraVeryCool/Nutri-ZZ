@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../stylesheets/Food.css';
-import {Link, useRouteMatch} from "react-router-dom";
+import {Link, useParams } from "react-router-dom";
 import {foodFrame, dataFrame} from '../functions/constants';
 import {formatDate, findNutrient, addFood} from '../functions/helperFunctions';
 import {Dropdown, DropdownElement, MessageDiv , SecButton, BackArrowDiv} from '../stylesheets/styledComponents';
@@ -10,9 +10,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Food = (props) => {
-  const link = useRouteMatch('/meal/:id/search/:id').url.split('/');
-  const foodId=link[link.length-1];
-  let meal = link[link.length-3];
+  const { id, foodId } = useParams();
+  // let foodId = secondId;
+  const meal = id;
+  // const foodId = id.split('/')[3];
+  // const link = useMatch('/meal/:id/search/:id').url.split('/');
+  // const foodId=link[link.length-1];
   //
   const [result, setResult] = useState(foodFrame);
   const [data, setData] = useState(dataFrame);
@@ -37,7 +40,7 @@ const Food = (props) => {
             }
           });
         } else {
-          console.log('the doc was not found, needs to be create it');
+          console.log('The doc was not found. It needs to be created.');
         }
     });
     return () => {
@@ -156,6 +159,7 @@ const Food = (props) => {
 
       <div className="page-food-trackDiv">
         <Link to={`/meal/${meal}`} className="link">
+        {/* <Link to={`/meal/${meal}`} className="link"> */}
           <SecButton width="50%" onClick={trackFood}>Track Food</SecButton>
         </Link>
       </div>

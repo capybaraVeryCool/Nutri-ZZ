@@ -62,7 +62,7 @@ const MessageDiv = styled.div`
     display :none;
     position: absolute;
     top: -70px;
-    transition: 0.3s all linear;
+    transition: 0.1s all linear;
     background-color: #f9f9f9;
     padding: 10px 20px;
     border-radius: 30px;
@@ -80,10 +80,11 @@ const PrimaryButton = styled.div`
   font-size: 20px;
   margin: 10px auto;
   padding: 10px 5px;
-  transition: 0.1s linear all;
+  // transition: 0.1s linear all;
   text-align: center;
   &: hover{
     background-color: var(--primary-dark);
+    cursor: pointer;
   }
 `;
 
@@ -96,10 +97,11 @@ const SecButton = styled.div`
   font-size: 25px;
   margin: 10px auto;
   padding: 10px 0;
-  transition: 0.1s linear all;
+  // transition: 0.1s linear all;
   text-align: center;
   &: hover{
     background-color: var(--primary-dark);
+    cursor: pointer;
   }
 `;
 

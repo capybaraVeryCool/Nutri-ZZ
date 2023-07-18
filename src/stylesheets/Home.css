@@ -40,7 +40,6 @@ button{
 .page-home-configure button{
   /* font-size: 50px; */
   color: white;
-  transition: 0.2s all linear;
 }
 /* .page-home-configure button:hover{
   transform: rotate(30deg);

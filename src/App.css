@@ -14,6 +14,14 @@
   --light: #FFDDD6;
   --dark-pink: #f1b6ac;
   --lightest: #fde9ea;
+
+  --seasalt: #F7F9F9ff;
+  --pistachio: #ABCE86ff;
+  --platinum: #EAE9E7ff;
+  --melon: #F6AB92ff;
+  --coffee: #734E3Dff;
+  --asparagus: #789B5Bff;
+  --redwood: #AB4D3Eff;
 }
 
 
@@ -44,6 +52,11 @@
 
 .custom-header {
   font-family: 'Outfit', sans-serif;
+  text-transform: uppercase;
   /* font-size: 24px;
   font-weight: bold; */
+}
+
+body {
+  scroll-behavior: auto;
 }

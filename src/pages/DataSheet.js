@@ -5,7 +5,7 @@ import {formatDate} from '../functions/helperFunctions';
 import DataList from '../components/DataList.js';
 import '../stylesheets/DataSheet.css';
 import { Link } from "react-router-dom";
-import {PrimaryButton, BackArrowDiv} from '../stylesheets/styledComponents';
+import {BackArrowDiv} from '../stylesheets/styledComponents';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
@@ -40,7 +40,7 @@ const DataSheet = (props) => {
         console.error("Error in Meal: ", error);
       })
     } else {
-      console.log('not logged in cannot update meal');
+      console.log('Not logged in. Unable to update meal.');
     }
     return () => {
       abortController.abort();
@@ -49,11 +49,11 @@ const DataSheet = (props) => {
 
   return (
     <div className="datasheet">
-      <BackArrowDiv>
+      {/* <BackArrowDiv>
         <Link to="/" className="link">
           <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
         </Link>
-      </BackArrowDiv>
+      </BackArrowDiv> */}
       <h1 className="custom-header" style={{marginTop: "30px", color: "black", opacity: 0.6}}>Nutritional Data</h1>
       <div className="big-datasheet-section" style={{border:"black", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       {showDataSheet ? (
