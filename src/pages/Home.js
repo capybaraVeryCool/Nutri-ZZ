@@ -12,13 +12,12 @@ import { Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-
 const Home = (props) => {
   // TODO: Listen to firestore change, update props
   // VARIABLES
   const meals = ["breakfast", "lunch", "dinner", "snacks"];
   const [date, setDate] = useState(formatDate(new Date())); // xx-xx-xx
-  const [isSigned, setIsSigned] = useState(!!firebase.auth().currentUser);
+  const [isSigned, setIsSigned] = useState(!!firebase.auth()?.currentUser);
   const [data, setData] = useState(dataFrame); // FIX: also update on any updates to Doc
 
   useEffect(() => {
@@ -36,7 +35,7 @@ const Home = (props) => {
 
   // SET SIGNED STATUS
   firebase.auth().onAuthStateChanged(() => {
-    setIsSigned(!!firebase.auth().currentUser);
+    setIsSigned(!!firebase.auth()?.currentUser);
   });
   const setSigned = (ans) => {
     setIsSigned(ans);
@@ -48,7 +47,7 @@ const Home = (props) => {
     let aborted = abortController.signal.aborted;
     if (isSigned===true ){
       let firestore = firebase.firestore();
-      const usersRef = firestore.collection('users').doc(firebase.auth().currentUser.uid).collection('days').doc(date)
+      const usersRef = firestore.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('days').doc(date)
       usersRef.get()
         .then((docSnapshot) => {
             if (docSnapshot.exists) {

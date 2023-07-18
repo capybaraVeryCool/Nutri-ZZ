@@ -15,15 +15,5 @@ firebase.initializeApp(firebaseConfig);
 
 export const firestore = firebase.firestore();
 export const auth = firebase.auth();
-// export const handleSignOut = async () => {
-//   try {
-//     await firebase.auth().signOut();
-//     // Sign-out successful
-//   } catch (error) {
-//     // Handle sign-out error
-//   }
-// }
-
-
 
 export default firebase;

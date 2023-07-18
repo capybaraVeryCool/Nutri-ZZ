@@ -29,7 +29,7 @@ const Food = (props) => {
     let abortController = new AbortController();
     let aborted = abortController.signal.aborted;
     let firestore = firebase.firestore();
-    const usersRef = firestore.collection('users').doc(firebase.auth().currentUser.uid).collection('days').doc(formatDate(props.date))
+    const usersRef = firestore.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('days').doc(formatDate(props.date))
     usersRef.get()
       .then((docSnapshot) => {
         if (docSnapshot.exists) {
@@ -98,7 +98,7 @@ const Food = (props) => {
   const trackFood = () => {
     const updated = addFood(data, meal, result);
     var db = firebase.firestore();
-    db.collection('users').doc(firebase.auth().currentUser.uid).collection('days').doc(formatDate(props.date)).update(updated)
+    db.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('days').doc(formatDate(props.date)).update(updated)
   }
 
 

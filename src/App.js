@@ -29,13 +29,13 @@ function App() {
   const [stateDate, dispatchDate] = useReducer(dateReducer, {date: new Date()});
   const [stateResults, dispatchResults] = useReducer(resultsReducer, {results: []});
   const [stateConfig, dispatchConfig] = useReducer(configReducer, {config: defaultConfigure});
-  const [isSigned, setIsSigned] = useState(!!firebase.auth().currentUser);
+  const [isSigned, setIsSigned] = useState(!!firebase.auth()?.currentUser);
 
   // useEffect on [] get config (from firestore) and dispatch update
 
   // SET SIGNED STATUS
   firebase.auth().onAuthStateChanged(() => {
-    setIsSigned(!!firebase.auth().currentUser);
+    setIsSigned(!!firebase.auth()?.currentUser);
   });
 
   // SET CONFIG
@@ -44,7 +44,7 @@ function App() {
     let aborted = abortController.signal.aborted;
     if (isSigned===true ){
       let firestore = firebase.firestore();
-      const usersRef = firestore.collection('users').doc(firebase.auth().currentUser.uid).collection('settings').doc('config')
+      const usersRef = firestore.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('settings').doc('config')
       usersRef.get()
         .then((docSnapshot) => {
             if (docSnapshot.exists) {

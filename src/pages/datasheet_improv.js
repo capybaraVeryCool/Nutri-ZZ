@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import '../stylesheets/Meal.css'
-import { useParams, Link } from "react-router-dom";
+import { useRouteMatch, Link } from "react-router-dom";
 import {formatDate} from '../functions/helperFunctions';
 import ProgressCircle from '../components/ProgressCircle';
 import firebase from '../firebase';
@@ -12,17 +12,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong, faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 
 const Meal = (props) => {
-  const { id } = useParams();
-  const meal = id;
-  // let meal = useMatch('/meal/:id').url.split('/');
-  // meal=meal[meal.length-1];
-
+  let meal = useRouteMatch('/meal/:id').url.split('/');
+  meal=meal[meal.length-1];
   // TODO: Listen to firestore change, update props
   const goalCal = Math.round((props.config.goalCal)/3);
   const [data, setData] = useState(dataFrame.meals[meal]);
   const [progressColor, setProgressColor] = useState({color: "white"});
   const [progress, setProgress] = useState(0);
-  const [isSigned, setIsSigned] = useState(!!firebase.auth()?.currentUser);
+  const [isSigned, setIsSigned] = useState(!!firebase.auth().currentUser);
   const [allData, setAllData] = useState(dataFrame);
 
   useEffect(() => {
@@ -30,8 +27,8 @@ const Meal = (props) => {
     let abortController = new AbortController();
     let aborted = abortController.signal.aborted;
     let firestore = firebase.firestore();
-    if (firebase.auth()?.currentUser && aborted!==true){
-      firestore.collection("users").doc(firebase.auth()?.currentUser?.uid).collection('days').doc(formatDate(props.date)).get().then((myDoc) => {
+    if (firebase.auth().currentUser && aborted!==true){
+      firestore.collection("users").doc(firebase.auth().currentUser.uid).collection('days').doc(formatDate(props.date)).get().then((myDoc) => {
         aborted = abortController.signal.aborted;
         if (aborted!==true){
           setData(myDoc.data().meals[meal]);
@@ -41,7 +38,7 @@ const Meal = (props) => {
         console.error("Error in Meal: ", error);
       })
     } else {
-      console.log('Not logged in. Unable to update meal.');
+      console.log('not logged in cannot update meal');
     }
     return () => {
       abortController.abort();
@@ -49,7 +46,7 @@ const Meal = (props) => {
   }, [props.date, meal, isSigned]);
 
   firebase.auth().onAuthStateChanged(() => {
-    setIsSigned(!!firebase.auth()?.currentUser);
+    setIsSigned(!!firebase.auth().currentUser);
   });
 
 
@@ -57,13 +54,13 @@ const Meal = (props) => {
     let calc = Math.round((data.sumCal/goalCal)*100);
     if (calc>100){
       calc = calc % 100;
-      setProgressColor({color: "#f1b6ac"})
+      setProgressColor({color: "#588061"})
     } else {
       setProgressColor({color: "white"})
     }
     if (calc>200){
       calc= 100;
-      setProgressColor({color: "#f1b6ac"})
+      setProgressColor({color: "#588061"})
     }
     setProgress(calc);
   }, [data, goalCal])
@@ -71,22 +68,22 @@ const Meal = (props) => {
 
   const updatedFullData = (updatedFullData) => {
     var db = firebase.firestore();
-    db.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('days').doc(formatDate(props.date)).update(updatedFullData);
+    db.collection('users').doc(firebase.auth().currentUser.uid).collection('days').doc(formatDate(props.date)).update(updatedFullData);
     props.dispatchDate({type: 'reload'});
   }
 
 
   return (
-    <div style={{display:"flex"}}>
+    <div>
       <div  className="page-meal">
         <div className="page-meal-top">
-          <h2 className="custom-header">{meal}</h2>
-          <h3 className="custom-header">{formatDate(props.date)}</h3>
+          <h2>{meal}</h2>
+          <h3>{formatDate(props.date)}</h3>
           <div className="page-meal-progress" style={progressColor}>
-            <ProgressCircle  progress={progress} circleSize="250" circleThickness="2.2" calories={data.sumCal} message={"calories eaten"}/>
+            <ProgressCircle  progress={progress} circleSize="250" calories={data.sumCal} message={"calories eaten"}/>
           </div>
         </div>
-        <Link to={`/meal/${meal}/search`} className="page-meal-search-link link">
+        <Link to={`${meal}/search`} className="page-meal-search-link link">
           <PrimaryButton width="20%">Add Food</PrimaryButton>
         </Link>
         <div className="page-meal-foodlist">
@@ -97,13 +94,15 @@ const Meal = (props) => {
           }
         </div>
       </div>
-      <div className="meal-nutri-container" style={{border: "black", margin: "5px", backgroundColor:"ffddd6"}}>
-        <DataList data={data} goal={goalCal}/>
+      <div className="page-meal-datalist">
+        <div>
+          <DataList data={data} goal={goalCal}/>
+        </div>
       </div>
 
       <BackArrowDiv>
         <Link to="/">
-        <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
+          <FontAwesomeIcon icon={faArrowLeft} style={{color: "black",fontSize: "40px", opacity: 0.5}} />
         </Link>
       </BackArrowDiv>
     </div>

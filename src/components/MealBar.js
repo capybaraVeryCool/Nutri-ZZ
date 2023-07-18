@@ -5,8 +5,6 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-
-
 const MealBar = (props) => {
 
   const [meal, setMeal] = useState(props.meal);
@@ -15,7 +13,7 @@ const MealBar = (props) => {
   const options = {
     "breakfast" : {
       title: "Breakfast",
-      emoji: "🍳",
+      emoji: "🥐",
     },
     "lunch" : {
       title: "Lunch",
@@ -23,11 +21,11 @@ const MealBar = (props) => {
     },
     "dinner" : {
       title: "Dinner",
-      emoji: "🍲",
+      emoji: "🍝",
     },
     "snacks" : {
       title: "Snacks",
-      emoji: "🍐",
+      emoji: "🍪",
     },
   }
 
