@@ -71,7 +71,7 @@ function App() {
         <NavBar className="edit" style={{padding: 0}}/>
         <Routes> 
           <Route exact path='/' element={<Home date={stateDate.date} dispatchDate={dispatchDate} config={stateConfig.config} dispatchConfig={dispatchConfig}/>}/>
-          <Route path='/meal/:id' element={<Meal date={stateDate.date} dispatchDate={dispatchDate} config={stateConfig.config}/>}/>
+          <Route exact path='/meal/:id' element={<Meal date={stateDate.date} dispatchDate={dispatchDate} config={stateConfig.config}/>}/>
           <Route exact path='/signin' element={<SignIn/>}/>
           <Route exact path='/meal/:id/search' element={<Search date={stateDate.date} results={stateResults.results} dispatchResults={dispatchResults}/>}/>
           <Route exact path='/meal/:id/search/:foodId' element={<Food date={stateDate.date}/>}/>

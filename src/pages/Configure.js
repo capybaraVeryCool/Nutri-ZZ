@@ -47,7 +47,7 @@ const Configure = (props) => {
   return (
     <div className="whole-page">
       <div class="image-container">
-        <img className="strawberry" src="AdobeStock_244073028_Preview.jpeg" alt="config_illustration"/>
+        <img className="strawberry" src="top-view-mother-s-day-concept.jpg" alt="config_illustration"/>
       </div>
       <div className="page-configure">
         <div className="page-configure-top">
@@ -60,12 +60,14 @@ const Configure = (props) => {
               <div className="page-configure-inputDiv">
                 <h2>Calorie Goal:</h2>
                 <input type="number" min="1200" id="page-configure-calories"/>
+                <span>cal</span>
               </div>
             </Col>
             <Col>
               <div className="page-configure-inputDiv">
                 <h2>Carbs Goal:</h2>
                 <input type="number" min="0" id="page-configure-carbs" />
+                <span>g</span>
               </div>
             </Col>
           </Row>
@@ -74,12 +76,14 @@ const Configure = (props) => {
               <div className="page-configure-inputDiv">
                 <h2>Protein Goal:</h2>
                 <input type="number" min="0" id="page-configure-protein" />
+                <span>g</span>
               </div>
             </Col>
             <Col>
               <div className="page-configure-inputDiv">
                 <h2>Fat Goal:</h2>
                 <input type="number" min="0" id="page-configure-fat" />
+                <span>g</span>
               </div>
             </Col>
           </Row>
