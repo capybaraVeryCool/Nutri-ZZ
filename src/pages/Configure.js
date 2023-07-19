@@ -8,19 +8,53 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 
 const Configure = (props) => {
-  const [inputGender, setInputGender] = useState('');
+  const [inputGender, setInputGender] = useState('male');
   const [inputAge, setInputAge] = useState('');
   const [inputHt, setInputHt] = useState('');
   const [inputWt, setInputWt] = useState('');
-  const [inputActiv, setInputActiv] = useState('');
+  const [inputActiv, setInputActiv] = useState('sedentary');
+  const [newUser, setNewUser] = useState(true);
 
   useEffect(() => {
+    const checkUserData = async () => {
+      try {
+        // Get the current user's ID
+        const userId = firebase.auth().currentUser?.uid;
+
+        // Check if the user is signed in
+        if (userId) {
+          // Get a reference to the document in Firestore
+          const docRef = firebase.firestore().collection('users').doc(userId).collection('settings').doc('config');
+
+          // Get the document snapshot
+          const docSnapshot = await docRef.get();
+
+          // Check if the document exists (data is present for the user)
+          if (docSnapshot.exists) {
+            // Data exists for the user, set the input fields to the retrieved values
+            const userData = docSnapshot.data();
+            setNewUser(false);
+            setInputGender(userData.gender);
+            setInputAge(userData.age.toString());
+            setInputHt(userData.height.toString());
+            setInputWt(userData.weight.toString());
+            setInputActiv(userData.activityLevel);
+          }
+        }
+      } catch (error) {
+        console.error('Error checking user data:', error);
+      }
+    };
+    checkUserData();
+
     let abortController = new AbortController();
-    setInputGender(props.config.gender);
-    setInputAge(props.config.age);
-    setInputHt(props.config.height);
-    setInputWt(props.config.weight);
-    setInputActiv(props.config.activityLevel);
+    // if (newUser!==true){
+    //   setInputGender(props.config.gender);
+    //   setInputAge(props.config.age);
+    //   setInputHt(props.config.height);
+    //   setInputWt(props.config.weight);
+    //   setInputActiv(props.config.activityLevel);
+    // }
     //
     // inputGender.value = inputGender;
     // inputAge.value = inputAge;
@@ -31,7 +65,7 @@ const Configure = (props) => {
     return () => {
       abortController.abort();
     };
-  }, [props]);
+  }, [props, props.config]);
 
   const submit = () => {
     const newConfig = {
@@ -55,35 +89,29 @@ const Configure = (props) => {
     // Calculate AMR based on activity level
     let goalCal;
     if (newConfig.activityLevel === 'sedentary') {
-      goalCal = bmr * 1.2;
+      goalCal = Math.round(bmr * 1.2);
     } else if (newConfig.activityLevel === 'lightlyActive') {
-      goalCal = bmr * 1.375;
+      goalCal = Math.round(bmr * 1.375);
     } else if (newConfig.activityLevel === 'moderatelyActive') {
-      goalCal = bmr * 1.55;
+      goalCal = Math.round(bmr * 1.55);
     } else if (newConfig.activityLevel === 'veryActive') {
-      goalCal = bmr * 1.725;
+      goalCal = Math.round(bmr * 1.725);
     } else if (newConfig.activityLevel === 'extraActive') {
-      goalCal = bmr * 1.9;
+      goalCal = Math.round(bmr * 1.9);
     }
 
     // Calculate goalMacros
     const goalFat = Math.round((goalCal * 0.3) / 9);
     const goalProtein = Math.round((goalCal * 0.3) / 4);
     const goalCarb = Math.round((goalCal * 0.4) / 4);
-
+    
     // update firestore (set it)
     var db = firebase.firestore();
     db.collection('users')
       .doc(firebase.auth()?.currentUser?.uid)
       .collection('settings')
       .doc('config')
-      .update({
-        ...newConfig,
-        goalCal: Math.round(goalCal),
-        goalFat,
-        goalProtein,
-        goalCarb,
-      });
+      .update({...newConfig, goalCal, goalFat, goalProtein, goalCarb, bmr});
 
     // dispatch config
     props.dispatchConfig({ type: 'update', payload: { ...newConfig, goalCal, goalFat, goalProtein, goalCarb } });
@@ -114,7 +142,7 @@ const Configure = (props) => {
             <Col style={{padding: "0px 40px"}}>
               <div className="page-configure-inputDiv">
                 <h2>Age:</h2>
-                <input type="number" min="0" id="page-configure-age" onChange={(e) => setInputAge(e.target.value)} value={inputAge}/>
+                <input type="number" min="0" id="page-configure-age" placeholder='' onChange={(e) => setInputAge(e.target.value)} value={inputAge}/>
                 <span>years</span>
               </div>
             </Col>

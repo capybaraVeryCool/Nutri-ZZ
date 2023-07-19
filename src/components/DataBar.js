@@ -3,6 +3,7 @@ import React, {useState, useEffect} from 'react';
 import '../stylesheets/DataBar.css'
 import ProgressCircle from './ProgressCircle';
 import {Link} from "react-router-dom";
+import firebase from '../firebase';
 
 const DataBar = (props) => {
   const [reloadPage, setReloadPage] = useState(false);
@@ -12,11 +13,11 @@ const DataBar = (props) => {
   if (reloadPage) {
     window.location.reload();
   }
-
-  const [goalCal, setGoalCal] = useState(props.config.goalCal);
-  // Macros: [carb , protein, fat]
+  const [newUser, setNewUser] = useState(true);
+  const [goalCal, setGoalCal] = useState(1750);
   const macros = ["Carbs", "Protein", "Fat"];
-  const [goalMacro, setGoalMacro] = useState([props.config.goalCarb, props.config.goalProtein, props.config.goalFat]); 
+  const [goalMacro, setGoalMacro] = useState([225, 100, 50]); 
+  
   const [eaten, setEaten] = useState(0);
   const [eatenMacros, setEatenMacros] = useState([0,0,0])
   const [burnt, setBurnt] = useState(0);
@@ -30,6 +31,42 @@ const DataBar = (props) => {
   const [progressMacroColor, setProgressMacroColor] = useState([{color: "white"}, {color: "white"}, {color: "white"}]);
   const [calMessage, setCalMessage] = useState("Calories Left");
   const [macroMessage, setMacroMessage] = useState(["Grams Left", "Grams Left", "Grams Left"]);
+
+  useEffect(() => {
+    const checkUserData = async () => {
+      try {
+        // Get the current user's ID
+        const userId = firebase.auth().currentUser?.uid;
+
+        // Check if the user is signed in
+        if (userId) {
+          // Get a reference to the document in Firestore
+          const docRef = firebase.firestore().collection('users').doc(userId).collection('settings').doc('config');
+
+          // Get the document snapshot
+          const docSnapshot = await docRef.get();
+
+          // Check if the document exists (data is present for the user)
+          if (docSnapshot.exists) {
+            // Data exists for the user, set the input fields to the retrieved values
+            const userData = docSnapshot.data();
+            // setInputGender(userData.gender);
+            // setInputAge(userData.age.toString());
+            // setInputHt(userData.height.toString());
+            // setInputWt(userData.weight.toString());
+            // setInputActiv(userData.activityLevel);
+            setNewUser(false);
+            setGoalCal(userData.goalCal);
+            setGoalMacro([userData.goalCarb, userData.goalProtein, userData.goalFat]);
+          }
+        }
+      } catch (error) {
+        console.error('Error checking user data:', error);
+      }
+    };
+    checkUserData();})
+  
+  
   
 
 
@@ -39,10 +76,14 @@ const DataBar = (props) => {
     setBurnt(props.data.sumBurnt);
     setEatenMacros([props.data.sumCarb, props.data.sumProtein, props.data.sumFat]);
   }, [props.data]);
-  useEffect(()=> {
-    setGoalCal(props.config.goalCal);
-    setGoalMacro([props.config.goalCarb, props.config.goalProtein, props.config.goalFat]);
-  }, [props.config])
+
+  // useEffect(()=> {
+  //   if (newUser!==true){
+  //     setGoalCal(props.config.goalCal);
+  //     setGoalMacro([props.config.goalCarb, props.config.goalProtein, props.config.goalFat]);
+  //   }, [props.config]
+  //   });
+    
 
 
 
