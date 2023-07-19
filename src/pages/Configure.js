@@ -8,11 +8,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 
 const Configure = (props) => {
-  const [inputGender, setInputGender] = useState('');
+  const [inputGender, setInputGender] = useState('male');
   const [inputAge, setInputAge] = useState('');
   const [inputHt, setInputHt] = useState('');
   const [inputWt, setInputWt] = useState('');
-  const [inputActiv, setInputActiv] = useState('');
+  const [inputActiv, setInputActiv] = useState('sedentary');
 
   useEffect(() => {
     let abortController = new AbortController();
@@ -41,6 +41,7 @@ const Configure = (props) => {
       weight: Number(inputWt),
       activityLevel: inputActiv,
     };
+    
     // Calculate BMR
     let bmr;
     if (inputGender === 'male') {
