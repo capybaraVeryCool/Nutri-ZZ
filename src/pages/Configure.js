@@ -1,25 +1,32 @@
-import React, { useEffect} from 'react';
-import { Link } from "react-router-dom";
-import {PrimaryButton, BackArrowDiv} from '../stylesheets/styledComponents';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { PrimaryButton, BackArrowDiv } from '../stylesheets/styledComponents';
 import '../stylesheets/Configure.css';
 import firebase from '../firebase';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeftLong} from '@fortawesome/free-solid-svg-icons';
+import { faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 
 const Configure = (props) => {
+  const [inputGender, setInputGender] = useState('');
+  const [inputAge, setInputAge] = useState('');
+  const [inputHt, setInputHt] = useState('');
+  const [inputWt, setInputWt] = useState('');
+  const [inputActiv, setInputActiv] = useState('');
 
   useEffect(() => {
     let abortController = new AbortController();
-    const inputCal = document.querySelector('#page-configure-calories');
-    const inputCarbs = document.querySelector('#page-configure-carbs');
-    const inputProtein = document.querySelector('#page-configure-protein');
-    const inputFat = document.querySelector('#page-configure-fat');
+    setInputGender(props.config.gender);
+    setInputAge(props.config.age);
+    setInputHt(props.config.height);
+    setInputWt(props.config.weight);
+    setInputActiv(props.config.activityLevel);
     //
-    inputCal.value = props.config.goalCal;
-    inputCarbs.value = props.config.goalCarb;
-    inputProtein.value = props.config.goalProtein;
-    inputFat.value = props.config.goalFat;
+    // inputGender.value = inputGender;
+    // inputAge.value = inputAge;
+    // inputHt.value = inputHt;
+    // inputWt.value = inputWt;
+    // inputActiv.value = inputActiv;
 
     return () => {
       abortController.abort();
@@ -27,27 +34,65 @@ const Configure = (props) => {
   }, [props]);
 
   const submit = () => {
-    const inputCal = document.querySelector('#page-configure-calories');
-    const inputCarbs = document.querySelector('#page-configure-carbs');
-    const inputProtein = document.querySelector('#page-configure-protein');
-    const inputFat = document.querySelector('#page-configure-fat');
     const newConfig = {
-      goalCal: Number(inputCal.value),
-      goalFat: Number(inputFat.value),
-      goalProtein: Number(inputProtein.value),
-      goalCarb: Number(inputCarbs.value),
+      gender: inputGender,
+      age: Number(inputAge),
+      height: Number(inputHt),
+      weight: Number(inputWt),
+      activityLevel: inputActiv,
+    };
+    // Calculate BMR
+    let bmr;
+    if (inputGender === 'male') {
+      bmr = 10 * newConfig.weight + 6.25 * newConfig.height - 5 * newConfig.age + 5;
+    } else if (inputGender === 'female') {
+      bmr = 10 * newConfig.weight + 6.25 * newConfig.height - 5 * newConfig.age - 161;
+    } else {
+      // Default BMR calculation for other genders (you can adjust this as needed)
+      bmr = 10 * newConfig.weight + 6.25 * newConfig.height - 5 * newConfig.age +((5-161)/2);
     }
+
+    // Calculate AMR based on activity level
+    let goalCal;
+    if (newConfig.activityLevel === 'sedentary') {
+      goalCal = bmr * 1.2;
+    } else if (newConfig.activityLevel === 'lightlyActive') {
+      goalCal = bmr * 1.375;
+    } else if (newConfig.activityLevel === 'moderatelyActive') {
+      goalCal = bmr * 1.55;
+    } else if (newConfig.activityLevel === 'veryActive') {
+      goalCal = bmr * 1.725;
+    } else if (newConfig.activityLevel === 'extraActive') {
+      goalCal = bmr * 1.9;
+    }
+
+    // Calculate goalMacros
+    const goalFat = Math.round((goalCal * 0.3) / 9);
+    const goalProtein = Math.round((goalCal * 0.3) / 4);
+    const goalCarb = Math.round((goalCal * 0.4) / 4);
+
     // update firestore (set it)
     var db = firebase.firestore();
-    db.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('settings').doc('config').update(newConfig)
+    db.collection('users')
+      .doc(firebase.auth()?.currentUser?.uid)
+      .collection('settings')
+      .doc('config')
+      .update({
+        ...newConfig,
+        goalCal: Math.round(goalCal),
+        goalFat,
+        goalProtein,
+        goalCarb,
+      });
+
     // dispatch config
-    props.dispatchConfig({type: 'update', payload: newConfig});
-  }
+    props.dispatchConfig({ type: 'update', payload: { ...newConfig, goalCal, goalFat, goalProtein, goalCarb } });
+  };
 
   return (
     <div className="whole-page">
-      <div class="image-container">
-        <img className="strawberry" src="top-view-mother-s-day-concept.jpg" alt="config_illustration"/>
+      <div className="image-container">
+        <img className="strawberry" src="picnic-basket-kitchen-cloth.jpg" alt="config_illustration" />
       </div>
       <div className="page-configure">
         <div className="page-configure-top">
@@ -56,51 +101,82 @@ const Configure = (props) => {
 
         <Container className="page-configure-inputs">
           <Row>
-            <Col>
+            <Col style={{padding: "0px 40px"}}>
               <div className="page-configure-inputDiv">
-                <h2>Calorie Goal:</h2>
-                <input type="number" min="1200" id="page-configure-calories"/>
-                <span>cal</span>
+                <h2>Gender:</h2>
+                <select id="page-configure-gender" onChange={(e) => setInputGender(e.target.value)} value={inputGender}>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                  <option value="other">Prefer not to say</option>
+                </select>
               </div>
             </Col>
-            <Col>
+            <Col style={{padding: "0px 40px"}}>
               <div className="page-configure-inputDiv">
-                <h2>Carbs Goal:</h2>
-                <input type="number" min="0" id="page-configure-carbs" />
-                <span>g</span>
+                <h2>Age:</h2>
+                <input type="number" min="0" id="page-configure-age" onChange={(e) => setInputAge(e.target.value)} value={inputAge}/>
+                <span>years</span>
+              </div>
+            </Col>
+          </Row>
+          <Row>
+            <Col style={{padding: "0px 40px"}}>
+              <div className="page-configure-inputDiv">
+                <h2>Height:</h2>
+                <input
+                  type="number"
+                  min="0"
+                  id="page-configure-height"
+                  onChange={(e) => setInputHt(e.target.value)}
+                  value={inputHt}
+                />
+                <span>cm</span>
+              </div>
+            </Col>
+            <Col style={{padding: "0px 40px"}}>
+              <div className="page-configure-inputDiv">
+                <h2>Weight:</h2>
+                <input
+                  type="number"
+                  min="0"
+                  id="page-configure-weight"
+                  onChange={(e) => setInputWt(e.target.value)}
+                  value={inputWt}
+                />
+                <span>kg</span>
               </div>
             </Col>
           </Row>
           <Row>
             <Col>
               <div className="page-configure-inputDiv">
-                <h2>Protein Goal:</h2>
-                <input type="number" min="0" id="page-configure-protein" />
-                <span>g</span>
-              </div>
-            </Col>
-            <Col>
-              <div className="page-configure-inputDiv">
-                <h2>Fat Goal:</h2>
-                <input type="number" min="0" id="page-configure-fat" />
-                <span>g</span>
+                <h2>Activity Level:</h2>
+                <select id="page-configure-activity" onChange={(e) => setInputActiv(e.target.value)} value={inputActiv} style={{width: "330px"}}>
+                  <option value="sedentary">Sedentary (little to no exercise)</option>
+                  <option value="lightlyActive">Lightly Active (light exercise/sports 1-3 days/week)</option>
+                  <option value="moderatelyActive">Moderately Active (moderate exercise/sports 3-5 days/week)</option>
+                  <option value="veryActive">Very Active (hard exercise/sports 6-7 days a week)</option>
+                  <option value="extraActive">Extra Active (very hard exercise/sports & physical job)</option>
+                </select>
               </div>
             </Col>
           </Row>
         </Container>
 
         <div className="page-configure-submit">
-          <PrimaryButton width="25%" onClick={submit}>Submit</PrimaryButton>
+          <PrimaryButton width="25%" onClick={submit}>
+            Submit
+          </PrimaryButton>
         </div>
       </div>
 
       <BackArrowDiv>
         <Link to="/">
-          <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
+          <FontAwesomeIcon icon={faArrowLeftLong} style={{ color: '#f1b6ac', fontSize: '30px' }} />
         </Link>
       </BackArrowDiv>
     </div>
   );
-}
+};
 
 export default Configure;
