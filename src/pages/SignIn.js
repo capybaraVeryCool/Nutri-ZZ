@@ -1,12 +1,35 @@
 import React, { useRef, useState} from 'react';
 import firebase from '../firebase';
 import { Button, Card, Form } from "react-bootstrap";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../stylesheets/SignIn.css'
 
 const SignIn = (props) => {
   // TODO: Listen to firestore change, update props
   const [onSignUp, setOnSignUp] =  useState(true);
+  const [resetPassword, setResetPassword] = useState(false);
+
+  const handleSwitchToLogin = () => {
+    setOnSignUp(false);
+  };
+
+  const handleSwitchToResetPassword = () => {
+    setResetPassword(true);
+  };
+
+  const handleResetPassword = () => {
+    const email = document.querySelector('#resetPassword-email').value;
+  
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(() => {
+        alert('Password reset email sent. Please check your inbox.');
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
 
   const signUp = () => {
     const username = document.querySelector("#signUp-username");
@@ -37,7 +60,6 @@ const SignIn = (props) => {
     promise.catch((e) => (alert(e)));
 
   }
-
 
   if (onSignUp === true) {
     return (
@@ -71,37 +93,90 @@ const SignIn = (props) => {
         </div>
       </div>
     );
+  } else if (resetPassword === true) {
+    return (
+      <div className="page-signin">
+        <div className="card signin" style={{ backgroundColor: '#ffddd6', border: 'none' }}>
+          <Card.Body className="signin d-flex justify-content-center" style={{ padding: 0 }}>
+            <h1 className="text-center">RESET PASSWORD</h1>
+            <Form>
+              <Form.Group>
+                <Form.Label className="form-lab">Email</Form.Label>
+                <Form.Control type="email" id="resetPassword-email" autoComplete="off" />
+              </Form.Group>
+
+              <div className="text-center">
+                <Button
+                  onClick={handleResetPassword}
+                  style={{
+                    backgroundColor: '#f1b6ac',
+                    border: 'none',
+                    fontSize: 18,
+                    lineHeight: 1.5,
+                    display: 'inline-block',
+                  }}
+                >
+                  Reset Password
+                </Button>
+              </div>
+
+              <div className="w-100 text-center" style={{ opacity: 0.7, marginTop: '20px' }}>
+                Back to Log In? Click{' '}
+                <span className="back-to-login-link" onClick={() => setResetPassword(false)} style={{ color: '#B88178', opacity: 1 }}>
+                  here
+                </span>
+              </div>
+            </Form>
+          </Card.Body>
+        </div>
+      </div>
+    );
   } else {
     return (
-      <div class="page-signin">
+      <div className="page-signin">
         <div className="card signin" style={{backgroundColor:"#ffddd6", border: "none"}}>
           <Card.Body className="signin d-flex justify-content-center" style={{padding:0}}>
             <h1 className="text-center">LOG IN</h1>
             <Form>
               <Form.Group>
                 <Form.Label className="form-lab">Email</Form.Label>
-                <Form.Control type="email" id="logIn-email" autoComplete="off"/>
+                <Form.Control type="email" id="logIn-email" autoComplete="off" />
               </Form.Group>
               <Form.Group>
                 <Form.Label className="form-lab">Password</Form.Label>
-                <Form.Control type="password" id="logIn-password" autoComplete="off"/>
+                <Form.Control type="password" id="logIn-password" autoComplete="off" />
               </Form.Group>
               <div className="text-center" style={{justifyContent: "center", alignItems:"center"}}>
-                <Button onClick={logIn} style={{backgroundColor: "#f1b6ac",border: "none",fontSize:18, lineHeight:1.5, display: "inline-block"}}>
+                <Button
+                  onClick={logIn}
+                  style={{ backgroundColor: '#f1b6ac', border: 'none', fontSize: 18, lineHeight: 1.5, display: 'inline-block' }}
+                >
                   Log In
                 </Button>
               </div>
+              <div className="w-100 text-center" style={{ opacity: 0.7, marginTop: '20px' }}>
+                Forgot your password? Click{' '}
+                <Link to="/reset-password" className="reset-password-link" style={{color: "#B88178", opacity: 1}}>
+                  here
+                </Link>
+              </div>
             </Form>
-            <div className="w-100 text-center" style={{opacity: 0.7}}>
-            Don't have an account yet? <span className="redirect" onClick={() => {setOnSignUp(true)}} style={{color: "#B88178", opacity: 1}}>Sign up here!</span>
+            <div className="w-100 text-center" style={{ opacity: 0.7 }}>
+              Don't have an account yet?{' '}
+              <span
+                className="redirect"
+                onClick={() => {
+                  setOnSignUp(true) 
+                }} style={{color: "#B88178", opacity: 1}}
+              >
+                Sign up here!
+              </span>
             </div>
           </Card.Body>
         </div>
       </div>
     );
   }
-
-
-}
+};
 
 export default SignIn;
