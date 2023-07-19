@@ -6,11 +6,12 @@ import '../stylesheets/SignIn.css'
 
 const SignIn = (props) => {
   // TODO: Listen to firestore change, update props
-  const [onSignUp, setOnSignUp] =  useState(true);
+  const [onSignUp, setOnSignUp] =  useState(false);
   const [resetPassword, setResetPassword] = useState(false);
 
   const handleSwitchToLogin = () => {
     setOnSignUp(false);
+    setResetPassword(false);
   };
 
   const handleSwitchToResetPassword = () => {
@@ -119,14 +120,13 @@ const SignIn = (props) => {
                   Reset Password
                 </Button>
               </div>
-
-              <div className="w-100 text-center" style={{ opacity: 0.7, marginTop: '20px' }}>
+            </Form>
+            <div className="w-100 text-center" style={{ opacity: 0.7, marginTop: '20px' }}>
                 Back to Log In? Click{' '}
-                <span className="back-to-login-link" onClick={() => setResetPassword(false)} style={{ color: '#B88178', opacity: 1 }}>
+                <span className="redirect" onClick={handleSwitchToLogin} style={{ color: '#B88178', opacity: 1 }}>
                   here
                 </span>
-              </div>
-            </Form>
+            </div>
           </Card.Body>
         </div>
       </div>
@@ -156,9 +156,9 @@ const SignIn = (props) => {
               </div>
               <div className="w-100 text-center" style={{ opacity: 0.7, marginTop: '20px' }}>
                 Forgot your password? Click{' '}
-                <Link to="/reset-password" className="reset-password-link" style={{color: "#B88178", opacity: 1}}>
+                <span className="redirect" onClick={handleSwitchToResetPassword} style={{ color: '#B88178', opacity: 1 }}>
                   here
-                </Link>
+                </span>
               </div>
             </Form>
             <div className="w-100 text-center" style={{ opacity: 0.7 }}>
