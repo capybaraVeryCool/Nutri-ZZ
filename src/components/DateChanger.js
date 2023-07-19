@@ -39,7 +39,7 @@ const DateChanger = (props) => {
         <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
       </button>
       <div style={{ textAlign: 'center', alignItems: 'center', justifyContent: 'center'}}>
-        <h1 className="current-date" style={{ textAlign: 'center'}}>{props.date}</h1>
+        <h1 className="current-date" style={{ textAlign: 'center', opacity: 0.6}}>{props.date}</h1>
         <input type="date" id="datechanger-date" onChange={handleDateChange} style={{ opacity: 0.6, textAlign: "center", justifyContent: "center", alignItems: "center", padding: 0 }} />
       </div>
       <button className="calendar-arr-fw" onClick={handleForwardClick}>

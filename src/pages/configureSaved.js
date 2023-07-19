@@ -39,7 +39,7 @@ const Configure = (props) => {
     }
     // update firestore (set it)
     var db = firebase.firestore();
-    db.collection('users').doc(firebase.auth().currentUser.uid).collection('settings').doc('config').update(newConfig)
+    db.collection('users').doc(firebase.auth()?.currentUser?.uid).collection('settings').doc('config').update(newConfig)
     // dispatch config
     props.dispatchConfig({type: 'update', payload: newConfig});
   }
@@ -60,12 +60,14 @@ const Configure = (props) => {
               <div className="page-configure-inputDiv">
                 <h2>Calorie Goal:</h2>
                 <input type="number" min="1200" id="page-configure-calories"/>
+                <span>cal</span>
               </div>
             </Col>
             <Col>
               <div className="page-configure-inputDiv">
                 <h2>Carbs Goal:</h2>
                 <input type="number" min="0" id="page-configure-carbs" />
+                <span>g</span>
               </div>
             </Col>
           </Row>
@@ -74,12 +76,14 @@ const Configure = (props) => {
               <div className="page-configure-inputDiv">
                 <h2>Protein Goal:</h2>
                 <input type="number" min="0" id="page-configure-protein" />
+                <span>g</span>
               </div>
             </Col>
             <Col>
               <div className="page-configure-inputDiv">
                 <h2>Fat Goal:</h2>
                 <input type="number" min="0" id="page-configure-fat" />
+                <span>g</span>
               </div>
             </Col>
           </Row>

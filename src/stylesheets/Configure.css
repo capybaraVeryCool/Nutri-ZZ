@@ -8,13 +8,16 @@
   overflow: hidden;
   display: flex;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: flex-end;
 }
 
 .strawberry {
   width: auto;
   height: 100%;
-  /* object-fit: cover; */
+  scale: 1.2;
+  transform: translate(-50px,10px);
+  /* object-position: 25% 25%;
+  object-fit: cover; */
 }
 
 .page-configure {
@@ -45,11 +48,11 @@
   justify-content: space-between;
 }
 
-.page-configure-inputDiv{
+.page-configure-inputDiv {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 40px 0;
+  margin: 28px 0;
 }
 .page-configure-inputDiv h2{
  font-size: 20px;
@@ -58,7 +61,7 @@
 }
 
 .page-configure-inputDiv input{
-  font-size: 20px;
+  font-size: 18px;
   border: none;
   border-bottom: 1px solid black;
   outline: none;
@@ -66,7 +69,23 @@
   margin-left: 30px;
 }
 
- .page-configure-inputDiv span {
+.page-configure-inputDiv select{
+  font-size: 18px;
+  border: none;
+  border-bottom: 1px solid black;
+  outline: none;
+  width: 100px;
+  margin-left: 30px;
+}
+
+.page-configure-inputDiv select option{
   font-size: 16px;
+}
+
+ .page-configure-inputDiv span {
+  font-size: 18px;
   margin-left: 5px;
+}
+.page-configure-submit {
+  margin: 28px 0px 28px 0px;
 }
