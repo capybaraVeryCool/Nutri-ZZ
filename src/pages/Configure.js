@@ -79,6 +79,7 @@ const Configure = (props) => {
       weight: Number(inputWt),
       activityLevel: inputActiv,
     };
+    
     // Calculate BMR
     let bmr;
     if (inputGender === 'male') {
