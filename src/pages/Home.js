@@ -89,30 +89,21 @@ const Home = (props) => {
         <div className="page-home-mealbars">
           {/* {meals.map((meal) => <MealBar meal={meal} totalCal={data.meals[meal].sumCal} key={meal}/>)} */}
           <div className="mealbar-container">
-            <Row>
-              <Col>
-                <MealBar class="left" meal={meals[0]} totalCal={data.meals[meals[0]].sumCal} />
-              </Col>
-              <Col/>
-            </Row>
-            <Row>
-              <Col/>
-              <Col>
+            
+              <MealBar class="left" meal={meals[0]} totalCal={data.meals[meals[0]].sumCal} />
+            
+            
                 <MealBar className="right" meal={meals[1]} totalCal={data.meals[meals[1]].sumCal} />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
+              
+          
+              
                 <MealBar class="left" meal={meals[2]} totalCal={data.meals[meals[2]].sumCal} />
-              </Col>
-              <Col/>
-            </Row>
-            <Row>
-              <Col/>
-              <Col>
+              
+            
+              
                 <MealBar className="right" meal={meals[3]} totalCal={data.meals[meals[3]].sumCal} />
-              </Col>
-            </Row>
+              
+            
           </div>
         </div>
         <div className="page-home-configure">

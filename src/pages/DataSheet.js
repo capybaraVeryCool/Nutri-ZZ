@@ -49,11 +49,11 @@ const DataSheet = (props) => {
 
   return (
     <div className="datasheet">
-      {/* <BackArrowDiv>
+      <BackArrowDiv>
         <Link to="/" className="link">
           <FontAwesomeIcon icon={faArrowLeftLong} style={{color: "#f1b6ac",fontSize: "30px"}} />
         </Link>
-      </BackArrowDiv> */}
+      </BackArrowDiv>
       <h1 className="custom-header" style={{marginTop: "30px", color: "black", opacity: 0.6}}>Nutritional Data</h1>
       <div className="big-datasheet-section" style={{border:"black", display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
       {showDataSheet ? (

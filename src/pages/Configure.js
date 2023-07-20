@@ -16,6 +16,7 @@ const Configure = (props) => {
   const [newUser, setNewUser] = useState(true);
 
   useEffect(() => {
+    let abortController = new AbortController();
     const checkUserData = async () => {
       try {
         // Get the current user's ID
@@ -33,6 +34,13 @@ const Configure = (props) => {
           if (docSnapshot.exists) {
             // Data exists for the user, set the input fields to the retrieved values
             const userData = docSnapshot.data();
+            if (
+              userData.hasOwnProperty('gender') &&
+              userData.hasOwnProperty('age') &&
+              userData.hasOwnProperty('height') &&
+              userData.hasOwnProperty('weight') &&
+              userData.hasOwnProperty('activityLevel')
+            ) {
             setNewUser(false);
             setInputGender(userData.gender);
             setInputAge(userData.age.toString());
@@ -40,14 +48,16 @@ const Configure = (props) => {
             setInputWt(userData.weight.toString());
             setInputActiv(userData.activityLevel);
           }
-        }
-      } catch (error) {
+        }}} catch (error) {
         console.error('Error checking user data:', error);
       }
     };
-    checkUserData();
 
-    let abortController = new AbortController();
+    checkUserData();
+    
+   
+
+    // let abortController = new AbortController();
     // if (newUser!==true){
     //   setInputGender(props.config.gender);
     //   setInputAge(props.config.age);
@@ -55,12 +65,6 @@ const Configure = (props) => {
     //   setInputWt(props.config.weight);
     //   setInputActiv(props.config.activityLevel);
     // }
-    //
-    // inputGender.value = inputGender;
-    // inputAge.value = inputAge;
-    // inputHt.value = inputHt;
-    // inputWt.value = inputWt;
-    // inputActiv.value = inputActiv;
 
     return () => {
       abortController.abort();

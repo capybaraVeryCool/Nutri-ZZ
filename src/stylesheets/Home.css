@@ -56,3 +56,10 @@ button{
 .right {
   margin-top: -15px;
 }
+
+.mealbar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

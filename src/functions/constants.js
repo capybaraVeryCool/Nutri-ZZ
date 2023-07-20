@@ -253,10 +253,10 @@ const foodFrame = {
 }
 
 const defaultConfigure = {
-    goalCal: 1800,
+    goalCal: 1750,
     goalFat: 50,
-    goalProtein: 80,
-    goalCarb: 200,
+    goalProtein: 100,
+    goalCarb: 225,
 }
 
 
