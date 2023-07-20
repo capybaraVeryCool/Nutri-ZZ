@@ -13,10 +13,7 @@ const Configure = (props) => {
   const [inputHt, setInputHt] = useState('');
   const [inputWt, setInputWt] = useState('');
   const [inputActiv, setInputActiv] = useState('sedentary');
-<<<<<<< HEAD
-=======
   const [newUser, setNewUser] = useState(true);
->>>>>>> b3249509d9d42d3c6540c9b0bfd7850f740bfd75
 
   useEffect(() => {
     const checkUserData = async () => {

@@ -99,7 +99,7 @@ const SignIn = (props) => {
       <div className="page-signin">
         <div className="card signin" style={{ backgroundColor: '#ffddd6', border: 'none' }}>
           <Card.Body className="signin d-flex justify-content-center" style={{ padding: 0 }}>
-            <h1 className="text-center">RESET PASSWORD</h1>
+            <h1 className="text-center custom-header">Reset Password</h1>
             <Form>
               <Form.Group>
                 <Form.Label className="form-lab">Email</Form.Label>
