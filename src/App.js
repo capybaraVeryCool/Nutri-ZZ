@@ -48,16 +48,24 @@ function App() {
       usersRef.get()
         .then((docSnapshot) => {
             if (docSnapshot.exists) {
+              const userData = docSnapshot.data();
+              if (
+                userData.hasOwnProperty('gender') &&
+                userData.hasOwnProperty('age') &&
+                userData.hasOwnProperty('height') &&
+                userData.hasOwnProperty('weight') &&
+                userData.hasOwnProperty('activityLevel')
+              ) {
               usersRef.onSnapshot((doc) => {
                 aborted = abortController.signal.aborted;
                 if (aborted===false){
                   dispatchConfig({type: 'update', payload: doc.data() })
                 }
-              });
+              })
             } else {
               usersRef.set(defaultConfigure); // Create Doc with Default
             }
-      });
+      }});
     }
     return () => {
       abortController.abort();

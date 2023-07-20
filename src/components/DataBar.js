@@ -33,6 +33,7 @@ const DataBar = (props) => {
   const [macroMessage, setMacroMessage] = useState(["Grams Left", "Grams Left", "Grams Left"]);
 
   useEffect(() => {
+    let abortController = new AbortController();
     const checkUserData = async () => {
       try {
         // Get the current user's ID
@@ -50,11 +51,6 @@ const DataBar = (props) => {
           if (docSnapshot.exists) {
             // Data exists for the user, set the input fields to the retrieved values
             const userData = docSnapshot.data();
-            // setInputGender(userData.gender);
-            // setInputAge(userData.age.toString());
-            // setInputHt(userData.height.toString());
-            // setInputWt(userData.weight.toString());
-            // setInputActiv(userData.activityLevel);
             setNewUser(false);
             setGoalCal(userData.goalCal);
             setGoalMacro([userData.goalCarb, userData.goalProtein, userData.goalFat]);
@@ -64,12 +60,11 @@ const DataBar = (props) => {
         console.error('Error checking user data:', error);
       }
     };
-    checkUserData();})
-  
-  
-  
-
-
+    checkUserData();
+    return () => {
+      abortController.abort();
+    };
+  }, [props, goalCal, goalMacro]);
 
   useEffect(() => {
     setEaten(props.data.sumCal);

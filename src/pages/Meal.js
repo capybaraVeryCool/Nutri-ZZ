@@ -46,7 +46,7 @@ const Meal = (props) => {
     return () => {
       abortController.abort();
     }
-  }, [props.date, meal, isSigned]);
+  }, [props.date, meal, isSigned, data]);
 
   firebase.auth().onAuthStateChanged(() => {
     setIsSigned(!!firebase.auth()?.currentUser);
