@@ -48,24 +48,16 @@ function App() {
       usersRef.get()
         .then((docSnapshot) => {
             if (docSnapshot.exists) {
-              const userData = docSnapshot.data();
-              if (
-                userData.hasOwnProperty('gender') &&
-                userData.hasOwnProperty('age') &&
-                userData.hasOwnProperty('height') &&
-                userData.hasOwnProperty('weight') &&
-                userData.hasOwnProperty('activityLevel')
-              ) {
               usersRef.onSnapshot((doc) => {
                 aborted = abortController.signal.aborted;
                 if (aborted===false){
                   dispatchConfig({type: 'update', payload: doc.data() })
                 }
-              })
+              });
             } else {
               usersRef.set(defaultConfigure); // Create Doc with Default
             }
-      }});
+        });
     }
     return () => {
       abortController.abort();
@@ -74,7 +66,7 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter basename="/">
+      {/* <BrowserRouter basename="/"> */}
         <ScrollToTop />
         <NavBar className="edit" style={{padding: 0}}/>
         <Routes> 
@@ -86,7 +78,7 @@ function App() {
           <Route exact path='/datasheet' element={<DataSheet date={stateDate.date} config={stateConfig.config} />}/>
           <Route exact path='/configure' element={<Configure config={stateConfig.config} dispatchConfig={dispatchConfig}/>}/>
         </Routes>
-      </BrowserRouter>
+      {/* </BrowserRouter> */}
     </div>
   );
 }
