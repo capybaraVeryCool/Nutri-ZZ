@@ -1,4 +1,1 @@
-- material-ui.com/components (CircularProgress)
-- react-minimal-pie-chart (npm)
-- styled components
-- react-router-dom
+This is a nutrition tracker web app with additional feature of calculating your personalised daily calorie intake.
