@@ -123,7 +123,7 @@ const Configure = (props) => {
   };
 
   return (
-    <div className="whole-page">
+    <div data-testid="configure-1"className="whole-page">
       <div className="image-container">
         <img className="strawberry" src="picnic-basket-kitchen-cloth.jpg" alt="config_illustration" />
       </div>
